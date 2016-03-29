@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 	// Generate random integer, will need to be added to the database and cleaned
 	$token = rand(10000,99999); 
 	
-    $message = "Welcome to The Thing, here is your registration code: $token";
+    $message = "Welcome to our platform, please enter this registration code: $token";
 
     if (empty($subject) && empty($message)) {
         exit("Message cannot be blank.");
