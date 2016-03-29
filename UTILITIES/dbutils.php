@@ -7,7 +7,7 @@
 function connectDB($DBHost,$DBUser,$DBPasswd,$DBName) {
   $db = mysqli_connect($DBHost,$DBUser,$DBPasswd,$DBName);
   if (mysqli_connect_errno() != 0)
-    punt("Can't connect to MySQL server $dbhost db $dbname as user $dbuser");
+    punt("Can't connect to MySQL server $DBHost db $DBName as user $DBUser");
   return($db);
 }
 
