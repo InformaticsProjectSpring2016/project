@@ -73,6 +73,15 @@
 					<input type="password" class="form-control" placeholder="Password" name="password"/>
 				</div>
 			</div>
+			
+			<div class="form-group">
+				<!--<label for="password">Confirm Password</label>-->
+				<div class="input-group">
+					<div class="input-group-addon">Confirm Password</div>
+					<input type="password" class="form-control" placeholder="Confirm Password" name="confirm password"/>
+				</div>
+			</div>
+			
 			<button type="submit" class="btn btn-success btn-lg" name="submit">Register</button>
 		</form>
 		</div>
