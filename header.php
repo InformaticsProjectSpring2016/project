@@ -29,17 +29,17 @@ include_once("UTILITIES/config.php");
 	<nav class="navbar navbar-light" style="background-color: #e3f2fd">
 	  <div class="container-fluid">
 		<div class="navbar-header">
-		  <a class="navbar-brand" href="#">Anti Wage Theft</a>
+		  <a class="navbar-brand" href="index.php">Anti Wage Theft</a>
 		</div>
 		<ul class="nav navbar-nav">
-		  <li class="active"><a href="#">Home</a></li>
-		  <li><a href="#">Report Data</a></li>
+		  <li><a href="enterhoursdata.php">Report Hours Worked</a></li>
+		  <li><a href="enterpaycheckdata.php">Report Paycheck Data</a></li>
 		  <li><a href="#">My Data</a></li> 
 		  <li><a href="#">Non-Profit</a></li> 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-		  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		  <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+		  <li><a href="admindash.php"><span class="glyphicon glyphicon-log-in"></span> Administrator</a></li>
 		</ul>
 	  </div>
 	</nav>
