@@ -48,7 +48,7 @@ function VerifyPassword($username, $password){
 }
 
 // This is used to verify a user's mobile registration code
-function VerifyMobileRegistration($username, $registrationCode){
+/* function VerifyMobileRegistration($username, $registrationCode){
 	$db = connectDB($DBHost,$DBUser,$DBPassword,$DBName);
 	// prep query
 	$query = "select code FROM MobileCodes WHERE UserName = '$username';";
@@ -58,12 +58,12 @@ function VerifyMobileRegistration($username, $registrationCode){
 
 	if(nTuples($result) > 0){
 		$row = mysqli_fetch_row($result);
-		if $row[0] == $registrationCode{
+		if ($row[0] == $registrationCode){
 			return(True);
 		}
 	}
 	return(False);
-}
+} */
 
 // Used for debugging. If invoked with a SQL query string
 // as the optional second argument, will also retrieve and

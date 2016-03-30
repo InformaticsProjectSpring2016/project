@@ -11,7 +11,11 @@ $BaseUrl = "/~" .$User. "/project";
 
 // DB connection (from  mysql_db_info file).
 $DBUser = "ngramer";
-$DBName = "db_" . $User;
+/* $DBName = "db_" . $User;
 $DBHost = "dbdev.cs.uiowa.edu";
-$DBPassword = "U5GMzDSTchGY";
+$DBPassword = "U5GMzDSTchGY"; */
+
+$DBName = "db_ngramer";
+$DBHost = "dbdev.cs.uiowa.edu";
+$DBPasswd = "U5GMzDSTchGY";
 ?>
