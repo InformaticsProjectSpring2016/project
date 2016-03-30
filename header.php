@@ -39,8 +39,8 @@ include_once("UTILITIES/config.php");
 		<ul class="nav navbar-nav">
 		  <li><a href="enterhoursdata.php">Report Hours Worked</a></li>
 		  <li><a href="enterpaycheckdata.php">Report Paycheck Data</a></li>
-		  <li><a href="#">My Data</a></li> 
-		  <li><a href="#">Non-Profit</a></li> 
+		  <li><a href="userdash.php">My Data</a></li> 
+		  <li><a href="nonprofitdash.php">Non-Profit</a></li> 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		  <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>

@@ -19,10 +19,10 @@
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Start Date</div>
-					<input type="date" name="StartDate"><br>
+					<input type="date" class="form-control" name="StartDate"><br>
 					
 					<div class="input-group-addon">End Date</div>
-					<input type="date" name="EndDate"><br>
+					<input type="date" class="form-control" name="EndDate"><br>
 				</div>
 			</div>
 			

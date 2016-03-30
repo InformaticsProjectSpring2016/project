@@ -20,17 +20,17 @@
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Start Date</div>
-					<input type="date" name="StartDate"><br>
+					<input type="date" class="form-control" name="StartDate"><br>
 					
 					<div class="input-group-addon">End Date</div>
-					<input type="date" name="EndDate"><br>
+					<input type="date" class="form-control" name="EndDate"><br>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Issue Date</div>
-					<input type="date" name="issuedate"/>
+					<input type="date" class="form-control" name="issuedate"/>
 				</div>
 			</div>
 			
@@ -51,7 +51,7 @@
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Amount Paid</div>
-					<input type="number" min="1" step="any"/>
+					<input type="number" min="1" step="any" class="form-control"/>
 				</div>
 			</div>
 			
