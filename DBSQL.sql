@@ -1,5 +1,6 @@
 -- tables
 -- Table Employers
+Drop Table if exists Employers, PaycheckData, Permissions, Users, UsersEmployment, WageDataEntries;
 CREATE TABLE Employers (
     Name varchar(55)  NOT NULL,
     Location varchar(55)  NOT NULL,
@@ -26,6 +27,7 @@ CREATE TABLE Permissions (
 );
 
 -- Table Users
+-- DateJoined date  NOT NULL,
 CREATE TABLE Users (
     UserID int  NOT NULL  AUTO_INCREMENT,
     FirstName varchar(55)  NOT NULL,
@@ -33,9 +35,9 @@ CREATE TABLE Users (
     Username varchar(55)  NOT NULL,
     UserPassword varchar(55)  NOT NULL,
     Email varchar(55)  NOT NULL,
+	Age int NOT NULL,
     Phone int  NOT NULL,
-    DateJoined date  NOT NULL,
-    LastLoggedIn timestamp  NULL   ON UPDATE CURRENT_TIMESTAMP,
+    LastLoggedIn timestamp  NULL ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE INDEX Username (Username),
     CONSTRAINT Users_pk PRIMARY KEY (UserID)
 );

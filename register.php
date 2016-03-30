@@ -15,46 +15,46 @@
 			<h1>Register</h1>
 			<p class="lead">Please enter your information below.</p>
 			
-		<form action="sendRegistration.php" method="post">
+		<form id="register" action="UTILITIES/storeRegistration.php" method="post">
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">First Name</div>
-					<input type="text" class="form-control" placeholder="First Name" name="firstname"/>
+					<input type="text" class="form-control" placeholder="First Name" name="Firstname" required>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Last Name</div>
-					<input type="text" class="form-control" placeholder="Last Name" name="lastname"/>
+					<input type="text" class="form-control" placeholder="Last Name" name="Lastname" required>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Age</div>
-					<input type="number" class="form-control" placeholder="Age" name="age"/>
+					<input type="number" class="form-control" placeholder="Age" name="Age" required>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Email</div>
-					<input type="email" class="form-control" placeholder="Email" name="email"/>
+					<input type="email" class="form-control" placeholder="Email" name="Email" required>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Cellphone Number</div>
-					<input type="number" class="form-control" placeholder="Enter 10-digit Cellphone Number" name="cell"/>
+					<input type="number" class="form-control" placeholder="Enter 10-digit Cellphone Number" name="Cell" required>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="input-group">	
 					<div class="input-group-addon">Employer (Will be php'd to include google)</div>
-					<input type="text" class="form-control" placeholder="Employer" name="employer"/>
+					<input type="text" class="form-control" placeholder="Employer" name="Employer" required>
 				</div>
 			</div>
 			
@@ -62,7 +62,7 @@
 				<!--<label for="username">Username</label>-->
 				<div class="input-group">	
 					<div class="input-group-addon">Username</div>
-					<input type="text" class="form-control" placeholder="Username" name="username"/>
+					<input type="text" class="form-control" placeholder="Username" name="Username" required>
 				</div>
 			</div>
 				
@@ -70,7 +70,7 @@
 				<!--<label for="password">Password</label>-->
 				<div class="input-group">
 					<div class="input-group-addon">Password</div>
-					<input type="password" class="form-control" placeholder="Password" name="password"/>
+					<input type="password" class="form-control" placeholder="Password" name="Password1" required>
 				</div>
 			</div>
 			
@@ -78,12 +78,64 @@
 				<!--<label for="password">Confirm Password</label>-->
 				<div class="input-group">
 					<div class="input-group-addon">Confirm Password</div>
-					<input type="password" class="form-control" placeholder="Confirm Password" name="confirm password"/>
+					<input type="password" class="form-control" placeholder="Confirm Password" name="Password2" required>
 				</div>
 			</div>
 			
 			<button type="submit" class="btn btn-success btn-lg" name="submit">Register</button>
 		</form>
+		<script>
+		$(document).ready(function() {
+			$('register').formValidation({
+				framework: 'bootstrap',
+				fields: {
+					Username: {
+						message: 'The username is not valid',
+						validators: {
+							// Send { username: 'its value', type: 'username' } to the back-end
+							remote: {
+								message: 'The username is already taken',
+								url: 'UTILITES/checkRegistrationData.php',
+								data: {
+									type: 'username'
+								},
+								type: 'POST'
+							}
+						}
+					},
+					Email: {
+						message: 'The email address is not valid',
+						validators: {
+							// Send { email: 'its value', type: 'email' } to the back-end
+							remote: {
+								message: 'The email is already taken',
+								url: 'UTILITES/checkRegistrationData.php',
+								data: {
+									type: 'email'
+								},
+								type: 'POST'
+							}
+						}
+					},
+				
+					Cell: {
+						message: 'The cellphone number is not valid',
+						validators: {
+							// Send { Cell: 'its value', type: 'Cell' } to the back-end
+							remote: {
+								message: 'The cellphone number is alreadu taken.',
+								url: 'UTILITES/checkRegistrationData.php',
+								data: {
+									type: 'Cell'
+								},
+								type: 'POST'
+							}
+						}
+					}
+				}
+			});
+		});
+		</script>
 		</div>
 	</div> <!-- Jumbotron -->
 </div>
