@@ -41,20 +41,22 @@ include_once("UTILITIES/config.php");
 		<?php
 		if($loggedIn){
 			echo '
-				
-				  <li><a href="enterhoursdata.php">Report Hours Worked</a></li>
-				  <li><a href="enterpaycheckdata.php">Report Paycheck Data</a></li>
-				  <li><a href="userdash.php">My Data</a></li>';
-				
+				<li><a href="enterhoursdata.php">Report Hours Worked</a></li>
+				<li><a href="enterpaycheckdata.php">Report Paycheck Data</a></li>
+				<li><a href="userdash.php">My Data</a></li>
+				<li><a href="nonprofitdash.php">Non-Profit</a></li>';
 		}?>
-		<li><a href="nonprofitdash.php">Non-Profit</a></li> 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<?php
 		if(!$loggedIn){
 			echo '
 		  <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>';
-		}?>
+		}else{
+			echo '
+		  <li><a href="logout.php"><span class="glyphicon glyphicon glyphicon-off"></span> Logout</a></li>';
+		}
+		?>
 		  <li><a href="admindash.php"><span class="glyphicon glyphicon-log-in"></span> Administrator</a></li>
 		</ul>
 	  </div>
