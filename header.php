@@ -15,7 +15,7 @@
 
 <!-- Check if user is logged in and include PHP configuration -->
 <?php
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['Username'])){
 	$loggedIn = True;
 }
 else {
@@ -37,13 +37,23 @@ include_once("UTILITIES/config.php");
 		  <a class="navbar-brand" href="index.php">Anti Wage Theft</a>
 		</div>
 		<ul class="nav navbar-nav">
-		  <li><a href="enterhoursdata.php">Report Hours Worked</a></li>
-		  <li><a href="enterpaycheckdata.php">Report Paycheck Data</a></li>
-		  <li><a href="userdash.php">My Data</a></li> 
-		  <li><a href="nonprofitdash.php">Non-Profit</a></li> 
+		<?php
+		if($loggedIn){
+			echo '
+				
+				  <li><a href="enterhoursdata.php">Report Hours Worked</a></li>
+				  <li><a href="enterpaycheckdata.php">Report Paycheck Data</a></li>
+				  <li><a href="userdash.php">My Data</a></li>';
+				
+		}?>
+		<li><a href="nonprofitdash.php">Non-Profit</a></li> 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-		  <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+		<?php
+		if(!$loggedIn){
+			echo '
+		  <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>';
+		}?>
 		  <li><a href="admindash.php"><span class="glyphicon glyphicon-log-in"></span> Administrator</a></li>
 		</ul>
 	  </div>
