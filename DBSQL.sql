@@ -33,7 +33,7 @@ CREATE TABLE Users (
     FirstName varchar(55)  NOT NULL,
     LastName varchar(55)  NOT NULL,
     Username varchar(55)  NOT NULL,
-    UserPassword varchar(55)  NOT NULL,
+    UserPassword varchar(255)  NOT NULL,
     Email varchar(55)  NOT NULL,
 	Age int NOT NULL,
     Phone int  NOT NULL,
