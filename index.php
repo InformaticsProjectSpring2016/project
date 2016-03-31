@@ -14,11 +14,11 @@
 				<h1>Welcome</h1>
 				<?php
 				if(!$loggedIn){
-					echo "<p class="lead">Please login or register to begin.</p>
+					echo '<p class="lead">Please login or register to begin.</p>
 					<a href ="login.php" class="btn btn-success btn-lg" role="button" >Login</a>
-					<a href ="register.php" class="btn btn-info btn-lg" role="button" >Register</a>"
+					<a href ="register.php" class="btn btn-info btn-lg" role="button" >Register</a>';
 				}else{
-					echo "<p class="lead">You are logged in! New Features coming soon.</p>"
+					echo '<p class="lead">You are logged in! New Features coming soon.</p>';
 				}
 				?>
 			</div>

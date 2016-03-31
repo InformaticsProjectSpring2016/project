@@ -15,6 +15,7 @@
 
 <!-- Check if user is logged in and include PHP configuration -->
 <?php
+session_start();
 if(isset($_SESSION['Username'])){
 	$loggedIn = True;
 }
