@@ -7,7 +7,7 @@ $db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 switch ($_POST['type']) {
 	case 'Username':
 		// prep query
-		$query = "Select * from Users WHERE Username = '$_POST[Username]';";
+		$query = "Select * from Users WHERE Username = '$_POST['Username']';";
 			
 		// execute sql statement
 		$result = queryDB($query, $db);
@@ -19,7 +19,7 @@ switch ($_POST['type']) {
 		
 	case 'Email':
 		// prep query
-		$query = "Select * from Users WHERE Email = '$_POST[Email]';";
+		$query = "Select * from Users WHERE Email = '$_POST['Email']';";
 			
 		// execute sql statement
 		$result = queryDB($query, $db);
@@ -31,7 +31,7 @@ switch ($_POST['type']) {
 		
 	case 'Cell':
 		// prep query
-		$query = "Select * from Users WHERE Phone = '$_POST[Cell]';";
+		$query = "Select * from Users WHERE Phone = '$_POST['Cell']';";
 			
 		// execute sql statement
 		$result = queryDB($query, $db);
