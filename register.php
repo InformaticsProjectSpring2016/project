@@ -86,51 +86,24 @@
 		</form>
 		<script>
 		$(document).ready(function() {
-			$('register').formValidation({
-				framework: 'bootstrap',
-				fields: {
+			$('#register').validate({
+				rules: {
 					Username: {
-						message: 'The username is not valid',
-						validators: {
-							// Send { username: 'its value', type: 'username' } to the back-end
-							remote: {
-								message: 'The username is already taken',
-								url: 'UTILITES/checkRegistrationData.php',
-								data: {
-									type: 'username'
-								},
-								type: 'POST'
-							}
+						// Send { username: 'its value', type: 'username' } to the back-end
+						remote: {
+							message: 'The username is already taken',
+							url: 'UTILITES/checkRegistrationData.php',
+							type: 'POST',
+							data: {
+								type: 'Username'
+							},
 						}
-					},
-					Email: {
-						message: 'The email address is not valid',
-						validators: {
-							// Send { email: 'its value', type: 'email' } to the back-end
-							remote: {
-								message: 'The email is already taken',
-								url: 'UTILITES/checkRegistrationData.php',
-								data: {
-									type: 'email'
-								},
-								type: 'POST'
-							}
-						}
-					},
-				
-					Cell: {
-						message: 'The cellphone number is not valid',
-						validators: {
-							// Send { Cell: 'its value', type: 'Cell' } to the back-end
-							remote: {
-								message: 'The cellphone number is alreadu taken.',
-								url: 'UTILITES/checkRegistrationData.php',
-								data: {
-									type: 'Cell'
-								},
-								type: 'POST'
-							}
-						}
+						
+					}
+				}
+				messages:{
+					Username:{
+						remote: "Email in use"
 					}
 				}
 			});

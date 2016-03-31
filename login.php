@@ -2,6 +2,8 @@
 	$menuHighlight = 0;
 	$pageTitle="Login";
 	include_once("header.php");
+	include_once("UTILITIES/config.php");
+	include_once("UTILITIES/dbutils.php");
 ?>
 
 
@@ -9,32 +11,50 @@
 	<div class = "col-xs-8">
 	<div class="text-center">
 		<!-- jumbotron-->
-		<div class="jumbotron">
-
-			<div class="text-center">
+		<div class="text-center">
+			<div class="jumbotron">
 				<h1>Login</h1>
-				<p class="lead">Please enter your username and password below.</p>
-				<div class="form-group">
-					<!--<label for="username">Username</label>-->
-					<div class="input-group">	
-						<div class="input-group-addon">Username</div>
-						<input type="text" class="form-control" placeholder="Username" name="username"/>
+				<p class="lead">Please enter your Username and Password below.</p>
+				<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+					<div class="form-group">
+						<!--<label for="Username">Username</label>-->
+						<div class="input-group">	
+							<div class="input-group-addon">Username</div>
+							<input type="text" class="form-control" placeholder="Username" name="Username"/>
+						</div>
 					</div>
-				</div>
-					
-				<div class="form-group">
-					<!--<label for="password">Password</label>-->
-					<div class="input-group">
-						<div class="input-group-addon">Password</div>
-						<input type="password" class="form-control" placeholder="Password" name="password"/>
+						
+					<div class="form-group">
+						<!--<label for="Password">Password</label>-->
+						<div class="input-group">
+							<div class="input-group-addon">Password</div>
+							<input type="Password" class="form-control" placeholder="Password" name="Password"/>
+						</div>
 					</div>
-				</div>
-			<button type="submit" class="btn btn-success btn-lg" name="submit">Login</button>
-			</div>
-		</div> <!-- Jumbotron -->
+					<button type="submit" class="btn btn-success btn-lg" name="submit">Login</button>
+				</form>
+			</div><!-- Jumbotron -->
+		</div> 
 	</div>
 </div>
 
 <?php
 	include_once("footer.php");
+?>
+
+<?php
+	if(isset($_POST['Username']) && isset($_POST['Password'])){
+		
+		$Username = $_POST['Username'];
+		$Password = $_POST['Password'];
+
+		if(VerifyPassword($Username, $Password)){
+			session_start();
+			$_SESSION['Username'] = $Username;
+			header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/");
+		} else {
+			echo "Username and Password do not match";
+			die();
+		}
+	}
 ?>
