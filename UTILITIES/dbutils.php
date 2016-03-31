@@ -2,7 +2,7 @@
 // Contains some common PHP db functions. Here, we always check the  
 // return object/value for errors.  Uses the mysqli functional interface
 // as opposed to the mysqli object interface.
-
+include_once("config.php");
 // Connect to DB: config.php contains DB configuration.
 function connectDB($DBHost,$DBUser,$DBPasswd,$DBName) {
   $db = mysqli_connect($DBHost,$DBUser,$DBPasswd,$DBName);
@@ -30,13 +30,13 @@ function nextTuple($result) {
   return (mysqli_fetch_assoc($result));
 }
 
-// NEEDS TO BE CHANGED TO SELECT FROM THE APPROPRIATE TABLE
+
 //connect to db and verify passwords. Returns True or False
 function VerifyPassword($username, $password){
-	$db = connectDB($DBHost,$DBUser,$DBPassword,$DBName);
+	$db = connectDB("dbdev.cs.uiowa.edu","ngramer","U5GMzDSTchGY","db_ngramer");
 	// prep query
-	$query = "SELECT password FROM hw5Users WHERE userName = '$username';";
-								//^^^^^^^^^	
+	$query = "SELECT UserPassword FROM Users WHERE Username = '$username';";
+	
 	// execute sql statement
 	$result = queryDB($query, $db);
 
