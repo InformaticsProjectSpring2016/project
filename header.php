@@ -67,25 +67,3 @@ include_once("UTILITIES/config.php");
 		</ul>
 	  </div>
 	</nav>
-
-	<!-- Beginning of bootstrap -->
-	
-	<!-- <div class = "container">
-		<!-- header -->
-		<!--<div class = "page-header">
-			<ul class="nav nav-pills pull-right">
-				<li role="presentation" <?php if($menuHighlight == 0) { echo 'class="active"';} ?>><a href=<?php echo '"'.$BaseUrl.'"';?>">Home</a></li>
-				
-				// <?php 
-					//if(!$loggedIn){
-						// echo '
-						// <a href="' . $BaseUrl . '/login.php" class="btn btn-success" role="button">Login</a>
-						// <a href="' . $BaseUrl . '/register.php" class="btn btn-info" role="button">Register</a>';
-					// }
-					// else {
-						// echo '<a href="' . $BaseUrl . '/logout.php" class="btn btn-warning" role="button">Logout</a>';
-					// }
-				// ?>
-			</ul>
-			<h2>Anti Wage Theft</h2>
-		</div> <!-- Closing Header-->
