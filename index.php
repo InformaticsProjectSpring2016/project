@@ -6,7 +6,7 @@
 
 
 <!-- Content row -->
-<div class = "row">
+<div class = "container">
 	<div class = "col-xs-12">
 		<!-- jumbotron-->
 		<div class="jumbotron">
@@ -24,29 +24,23 @@
 			</div>
 	</div> <!-- Jumbotron -->
 </div>
-<!--
-<div class = "row">
-	<div class = "col-xs-12">
-		<div class = "col-xs-4">
-			<p class ="lead text-center">Column 1 </p>
-			Filler Content!
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor ut justo ut molestie. Donec luctus orci sit amet hendrerit hendrerit. Ut gravida risus ut vestibulum elementum. Curabitur aliquam tempor eros eget consequat. Vivamus pretium efficitur mi, vel dictum enim viverra nec. In sapien ante, rhoncus non sapien in, sodales euismod elit. Donec pellentesque nec elit sit amet efficitur. Morbi nec felis mi. Nulla tempus vestibulum porta. Maecenas in finibus purus, ac sollicitudin urna. Nunc porta eros vel lectus viverra, vitae rutrum magna finibus. Aenean vitae metus at massa gravida maximus sed nec augue. Mauris vitae interdum orci. 
-		</div>
-		<div class = "col-xs-4">
-			<p class ="lead text-center">Column 2 </p>
-			Filler content!
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor ut justo ut molestie. Donec luctus orci sit amet hendrerit hendrerit. Ut gravida risus ut vestibulum elementum. Curabitur aliquam tempor eros eget consequat. Vivamus pretium efficitur mi, vel dictum enim viverra nec. In sapien ante, rhoncus non sapien in, sodales euismod elit. Donec pellentesque nec elit sit amet efficitur. Morbi nec felis mi. Nulla tempus vestibulum porta. Maecenas in finibus purus, ac sollicitudin urna. Nunc porta eros vel lectus viverra, vitae rutrum magna finibus. Aenean vitae metus at massa gravida maximus sed nec augue. Mauris vitae interdum orci. 
-		</div>
-		<div class = "col-xs-4">
-			<p class ="lead text-center">Column 3 </p>
-			Filler Content!
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor ut justo ut molestie. Donec luctus orci sit amet hendrerit hendrerit. Ut gravida risus ut vestibulum elementum. Curabitur aliquam tempor eros eget consequat. Vivamus pretium efficitur mi, vel dictum enim viverra nec. In sapien ante, rhoncus non sapien in, sodales euismod elit. Donec pellentesque nec elit sit amet efficitur. Morbi nec felis mi. Nulla tempus vestibulum porta. Maecenas in finibus purus, ac sollicitudin urna. Nunc porta eros vel lectus viverra, vitae rutrum magna finibus. Aenean vitae metus at massa gravida maximus sed nec augue. Mauris vitae interdum orci. 
-		</div>
-	</div>
+
+<div> <p></p> </div>
+
+<div class="container">
+  <div class="text-center">
+    <h2>What is wage theft?</h2>
+    <p>Wage theft is defined as what is happening when workers "are paid less than the minimum 
+       wage, denied overtime pay, forced to work off the clock, and those whose paycheck does not 
+       reflect the hours worked." Our website is designed to let employees report their hours worked
+   	   and their paychecks received. The site will then calculate whether or not the recieved pay
+   	   totals what is should be. Our site is monitored by not-for-profit companies that are interested
+   	   in tracking and reporting instances of wage theft.</p>
+  </div>
+  <div class="text-center">
+  	<p> Check out <a href="http://www.wagetheft.org/"> WageTheft.org</a> for more information. </p>
 </div>
--->
 
 <?php
 	include_once("footer.php");
 ?>
-
