@@ -31,6 +31,13 @@
 							<input type="Password" class="form-control" placeholder="Password" name="Password"/>
 						</div>
 					</div>
+					<div class="form-group">
+						<!--<label for="remember">remember</label>-->
+						<span>
+							<input type="checkbox" name="checkbox">
+							<label for="checkbox">remember</label>
+						</span>
+					</div>
 					<button type="submit" class="btn btn-success btn-lg" name="submit">Login</button>
 				</form>
 			</div><!-- Jumbotron -->
