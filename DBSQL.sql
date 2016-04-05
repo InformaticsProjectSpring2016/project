@@ -29,17 +29,17 @@ CREATE TABLE Users (
     UserPassword varchar(255)  NOT NULL,
     Email varchar(55)  NOT NULL,
     Age int NOT NULL,
-    AccountType int NOT NULL DEFAULT 2, 
+    AccountType int NOT NULL DEFAULT 2,
     Phone int  NOT NULL,
-    LastLoggedIn timestamp  NULL ON UPDATE CURRENT_TIMESTAMP,
-    DateJoined date NOT NULl DEFAULT GETDATE(),
+    LastLoggedIn timestamp NULL DEFAULT NULL,
+    DateJoined timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (UserID)
 );
 
 -- Table UsersEmployment
 CREATE TABLE UsersEmployment (
     EmployerID int  NOT NULL,
-    HourlyWage unsigned int  NOT NULL,
+    HourlyWage int unsigned  NOT NULL,
     TypeofPay varchar(55)  NOT NULL,
     StandardHours int unsigned  NOT NULL,
     UserID int  NOT NULL,
@@ -87,11 +87,6 @@ ALTER TABLE PaycheckData ADD CONSTRAINT Users_PaycheckData FOREIGN KEY Users_Pay
     REFERENCES Users (UserID)
     ON DELETE CASCADE;
 
--- Reference:  Users_Permissions (table: Permissions)
-
-ALTER TABLE Permissions ADD CONSTRAINT Users_Permissions FOREIGN KEY Users_Permissions (UserID)
-    REFERENCES Users (UserID)
-    ON DELETE CASCADE;
 
 
 
