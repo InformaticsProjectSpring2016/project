@@ -11,6 +11,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <!-- Check if user is logged in and include PHP configuration -->
@@ -27,7 +32,7 @@ include_once("UTILITIES/config.php");
 
 
 <body>
-	<nav class="navbar navbar-inverse"> 
+	<nav class="navbar navbar-default"> 
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -62,25 +67,3 @@ include_once("UTILITIES/config.php");
 		</ul>
 	  </div>
 	</nav>
-
-	<!-- Beginning of bootstrap -->
-	
-	<!-- <div class = "container">
-		<!-- header -->
-		<!--<div class = "page-header">
-			<ul class="nav nav-pills pull-right">
-				<li role="presentation" <?php if($menuHighlight == 0) { echo 'class="active"';} ?>><a href=<?php echo '"'.$BaseUrl.'"';?>">Home</a></li>
-				
-				// <?php 
-					//if(!$loggedIn){
-						// echo '
-						// <a href="' . $BaseUrl . '/login.php" class="btn btn-success" role="button">Login</a>
-						// <a href="' . $BaseUrl . '/register.php" class="btn btn-info" role="button">Register</a>';
-					// }
-					// else {
-						// echo '<a href="' . $BaseUrl . '/logout.php" class="btn btn-warning" role="button">Logout</a>';
-					// }
-				// ?>
-			</ul>
-			<h2>Anti Wage Theft</h2>
-		</div> <!-- Closing Header-->
