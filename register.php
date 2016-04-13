@@ -64,23 +64,7 @@
 			
 			<!-- I think we should prompt them to add employment after they've registered and logged in
 			
-			<div class="row">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Employer</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="Employer" name="Employer" required>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Employer Street Address</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="Street Address" name="EmployerAddress" required>
-					</div>
-				</div>
-			</div>
+
 			-->
 			
 			<!-- google maps integration, broken :(
