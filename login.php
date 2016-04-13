@@ -8,62 +8,84 @@
 
 
 <div class = "col-xs-2"></div> <!-- Used to push jumbotron smaller and to the right -->
-	<div class = "col-xs-8">
-	<div class="text-center">
-		<!-- jumbotron-->
+<div class = "col-xs-8">
+<div class="text-center">
+	<div class ="container">
+	<!-- jumbotron--> 
+	<div class="jumbotron">
 		<div class="text-center">
-			<div class="jumbotron">
-				<h1>Login</h1>
-				<p class="lead">Please enter your Username and Password below.</p>
-				<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+			<h1>Login</h1>
+			<p class="lead">Please enter your Username and Password below.</p>
+			<?php
+				if($_GET["register"] == "1"){
+					echo '<div class="alert alert-success" role="alert">Welcome! Please login now.</div>';
+				}
+			?>
+			
+			<form action="<?php echo $_SERVER['PHP_SELF'];?>" class="form-horizontal" method="post">
+			
+				<?php
+					if(isset($_POST['Username']) && isset($_POST['Password'])){
+						
+						$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
+						$Username = mysqli_real_escape_string($db, $_POST['Username']);
+						$Password = mysqli_real_escape_string($db, $_POST['Password']);
+						
+						if(VerifyPassword($Username, $Password)){
+							session_start();
+							$_SESSION['Username'] = $Username;
+							/* Check for active employers */
+							$query = "SELECT * FROM UsersEmployment WHERE UserID = (SELECT UserID from Users where Username = '$Username');";
+							$result = queryDB($query, $db);	
+							if(nTuples($result) == 0){
+								header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/addemployment.php");
+							}else{
+								header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/");	
+							}
+							
+						} else {
+							echo '<div class="alert alert-danger" role="alert">Username and Password do not match</div>';
+						}
+					}
+				?>
+				<div class="row">
 					<div class="form-group">
-						<!--<label for="Username">Username</label>-->
-						<div class="input-group">	
-							<div class="input-group-addon">Username</div>
+						<label class="col-sm-2 control-label">Username</label>
+						<div class="col-sm-8">
 							<input type="text" class="form-control" placeholder="Username" name="Username"/>
 						</div>
 					</div>
-						
+				</div>
+					
+				<div class="row">
 					<div class="form-group">
-						<!--<label for="Password">Password</label>-->
-						<div class="input-group">
-							<div class="input-group-addon">Password</div>
+						<label class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-8">
 							<input type="Password" class="form-control" placeholder="Password" name="Password"/>
 						</div>
 					</div>
-					<!--
-					<div class="form-group">
-						<!--<label for="remember">remember</label>
-						<span>
-							<input type="checkbox" name="checkbox">
-							<label for="checkbox">remember</label>
-						</span>
-					</div>
-					-->
-					<button type="submit" class="btn btn-success btn-lg" name="submit">Login</button>
-				</form>
-			</div><!-- Jumbotron -->
-		</div> 
-	</div>
+				</div>
+				<!--
+				<div class="form-group">
+					<!--<label for="remember">remember</label>
+					<span>
+						<input type="checkbox" name="checkbox">
+						<label for="checkbox">remember</label>
+					</span>
+				</div>
+				-->
+				
+				<button type="submit" class="btn btn-success btn-lg" name="submit">Login</button>
+			</form>
+		</div>
+	</div><!-- Jumbotron -->
+	</div><!-- container -->
+</div> 
 </div>
+
 
 <?php
 	include_once("footer.php");
 ?>
 
-<?php
-	if(isset($_POST['Username']) && isset($_POST['Password'])){
-		
-		$Username = $_POST['Username'];
-		$Password = $_POST['Password'];
 
-		if(VerifyPassword($Username, $Password)){
-			session_start();
-			$_SESSION['Username'] = $Username;
-			header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/");
-		} else {
-			echo "Username and Password do not match";
-			die();
-		}
-	}
-?>
