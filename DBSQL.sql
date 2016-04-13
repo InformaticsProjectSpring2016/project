@@ -1,6 +1,8 @@
 -- tables
 -- Table Employers
-Drop Table if exists Employers, PaycheckData, Permissions, Users, UsersEmployment, WageDataEntries;
+set foreign_key_checks = 0;
+Drop Table if exists Employers, PaycheckData, Permissions, Users, UsersEmployment, WageDataEntries, SMSTokens;
+set foreign_key_checks = 1;
 CREATE TABLE Employers (
     Name varchar(55)  NOT NULL,
     Location varchar(55)  NOT NULL,
@@ -19,8 +21,19 @@ CREATE TABLE PaycheckData (
     PRIMARY KEY (PaycheckID)
 );
 
+CREATE TABLE SMSTokens(
+	Cell bigint not null,
+	Token int not null
+);
 
 -- Table Users
+/* 
+Verified 0 is not, 1 is
+
+Account types:
+0 :Admin
+1 :Non Profit
+2 :User */
 CREATE TABLE Users (
     UserID int  NOT NULL  AUTO_INCREMENT,
     FirstName varchar(55)  NOT NULL,
@@ -30,9 +43,10 @@ CREATE TABLE Users (
     Email varchar(55)  NOT NULL,
     Age int NOT NULL,
     AccountType int NOT NULL DEFAULT 2,
-    Phone int  NOT NULL,
+    Phone bigint  NOT NULL,
     LastLoggedIn timestamp NULL DEFAULT NULL,
     DateJoined timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	Verified int NOT NULL DEFAULT 0,
     PRIMARY KEY (UserID)
 );
 
@@ -88,7 +102,7 @@ ALTER TABLE PaycheckData ADD CONSTRAINT Users_PaycheckData FOREIGN KEY Users_Pay
     ON DELETE CASCADE;
 
 
-
+insert into Users (Username, FirstName, LastName, UserPassword, Phone, Age,Email) VALUES ('a','a','a','$1$oxvBpPJm$6qUvF.4OgqvziGk6vMmp11','6308730098','22','a@a.com');
 
 -- End of file.
 
