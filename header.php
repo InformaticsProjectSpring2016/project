@@ -2,24 +2,31 @@
 <title><?php echo $pageTitle;?></title>
 <head>
 <!-- my css file to change up the container width -->
-<link rel="stylesheet" href= "/webdev/hw1/mycss.css">
+<link rel="stylesheet" href= "http://webdev.divms.uiowa.edu/~ngramer/project/mycss.css">
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/css/bootstrap.min.css"
+<!-- Latest compiled and minified CSS replacement bootstrap.min.css from bootswatch -->
+<link rel="stylesheet" href="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet/less" type="text/css" href="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/bootswatch.less"> 
+<link rel="stylesheet/less" type="text/css" href="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/variables.less"> 
+<script src="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/less.min.js"></script>
 
-<!-- Optional theme -->
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- date picking -->
+<link rel="stylesheet" href="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/css/bootstrap-datepicker.css">
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+ 
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/locales/bootstrap-datepicker.en-GB.min.js" charset="UTF-8"></script>
+
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<meta name="google-site-verification" content="2zYKJQnP6p47kekwBybCv97I3UcBso-qF7A3LJvnd44" />
 </head>
 
 <!-- Check if user is logged in and include PHP configuration -->
@@ -36,6 +43,17 @@ include_once("UTILITIES/config.php");
 
 
 <body>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-76341761-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
 	<nav class="navbar navbar-default"> 
 	  <div class="container-fluid">
 	    <div class="navbar-header">
