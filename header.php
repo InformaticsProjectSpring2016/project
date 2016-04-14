@@ -10,6 +10,9 @@
 <link rel="stylesheet/less" type="text/css" href="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/variables.less"> 
 <script src="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/less.min.js"></script>
 
+<!-- add animate -->
+<link rel="stylesheet" href= "http://webdev.divms.uiowa.edu/~ngramer/project/animate.css">
+
 <!-- date picking -->
 <link rel="stylesheet" href="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/css/bootstrap-datepicker.css">
 

@@ -6,7 +6,7 @@
 
 
 <!-- Content row -->
-<div class = "container">
+<div class = "container animated slideInUp">
 	<div class = "col-xs-12">
 		<!-- jumbotron-->
 		<div class="jumbotron">
@@ -27,10 +27,11 @@
 			</div>
 	</div> <!-- Jumbotron -->
 </div>
+</div>
 
 <div> <p></p> </div>
 
-<div class="container">
+<div class="container info animated fadeIn">
   <div class="text-center">
     <h2>What is wage theft?</h2>
     <p>Wage theft is defined as what is happening when workers "are paid less than the minimum 
@@ -42,6 +43,7 @@
   </div>
   <div class="text-center">
   	<p> Check out <a href="http://www.wagetheft.org/"> WageTheft.org</a> for more information. </p>
+</div>
 </div>
 
 <?php
