@@ -7,10 +7,9 @@
 ?>
 
 
-<div class = "col-xs-2"></div> <!-- Used to push jumbotron smaller and to the right -->
-<div class = "col-xs-8">
-<div class="text-center">
-	<div class ="container">
+
+<div class ="container">
+<div class = "col-xs-12">
 	<!-- jumbotron--> 
 	<div class="jumbotron">
 		<div class="text-center">
@@ -79,9 +78,9 @@
 			</form>
 		</div>
 	</div><!-- Jumbotron -->
-	</div><!-- container -->
-</div> 
-</div>
+	</div>
+</div> <!-- container -->
+
 
 
 <?php

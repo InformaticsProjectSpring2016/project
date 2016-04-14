@@ -5,11 +5,9 @@
 ?>
 
 
-<div class = "col-xs-2"></div> <!-- Used to push jumbotron smaller and to the right -->
-<div class = "col-xs-8">
-<div class="text-center">
-	<div class="container">
-	<!-- jumbotron-->
+<div class ="container">
+<div class = "col-xs-12">
+	<!-- jumbotron--> 
 	<div class="jumbotron">
 
 		<div class="text-center">
@@ -67,7 +65,7 @@
 
 			-->
 			
-			<!-- google maps integration, broken :(
+			
 			<input id="pac-input" class="controls" type="text"
 			placeholder="Enter a location">
 			<div id="map"></div>
@@ -134,7 +132,7 @@
 			</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUJpVVIMGYMFzK_6qEi_PjDJyh5BGbJ00&libraries=places&callback=initMap"
 				async defer></script>
-			-->
+			
 			
 			
 			<div class="row">
@@ -170,7 +168,7 @@
 	</div> <!-- Jumbotron -->
 	</div> <!-- Container -->
 </div>
-</div>
+
 
 <?php
 	include_once("footer.php");

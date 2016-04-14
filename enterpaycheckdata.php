@@ -7,11 +7,9 @@
 ?>
 
 
-<div class = "col-xs-2"></div> <!-- Used to push jumbotron smaller and to the right -->
-<div class = "col-xs-8">
-<div class="text-center">
-	<div class ="container">
-	<!-- jumbotron-->
+<div class ="container">
+<div class = "col-xs-12">
+	<!-- jumbotron--> 
 	<div class="jumbotron">
 		<div class="text-center">
 			<h1>Enter My Paycheck</h1>
@@ -115,7 +113,7 @@
 		</div>
 	</div> <!-- Jumbotron -->
 </div>
-</div>
+
 
 <script>
 // This initializes my datepickers based on div id's
