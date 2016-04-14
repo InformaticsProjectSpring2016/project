@@ -31,7 +31,7 @@
 
 <div> <p></p> </div>
 
-<div class="container info animated fadeIn">
+<div class="container info animated slow fadeIn">
   <div class="text-center">
     <h2>What is wage theft?</h2>
     <p>Wage theft is defined as what is happening when workers "are paid less than the minimum 
