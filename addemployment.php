@@ -37,19 +37,7 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Type of Pay</label>
-					<div class="col-sm-8">
-						<select name = "PayType">
-							<option value ="hourly">Hourly</option>
-							<option value ="salaried">Salaried</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			
+						
 			<div class="row">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Hourly Wage</label>
@@ -81,7 +69,6 @@ if(isset($_POST['Name'])){
 	$Name = mysqli_real_escape_string($db, $_POST['Name']);
 	$EmployerAddress = mysqli_real_escape_string($db, $_POST['EmployerAddress']);
 	$HourlyWage = mysqli_real_escape_string($db, $_POST['HourlyWage']);
-	$PayType = mysqli_real_escape_string($db, $_POST['PayType']);
 	$StdHours = mysqli_real_escape_string($db, $_POST['StdHours']);
 	
 	
@@ -99,7 +86,7 @@ if(isset($_POST['Name'])){
 		$result = queryDB($query, $db);	
 		$row = mysqli_fetch_row($result);
 		$EmployerID = $row[0];
-		$query = "insert into UsersEmployment (EmployerID, HourlyWage, TypeofPay, StandardHours, UserID) VALUES ('$EmployerID','$HourlyWage','$PayType','$StdHours','$UserID');";
+		$query = "insert into UsersEmployment (EmployerID, HourlyWage, StandardHours, UserID) VALUES ('$EmployerID','$HourlyWage','$StdHours','$UserID');";
 		$result = queryDB($query, $db);
 	}else{
 		$query = "Select UserID from Users where Username = '$UserName';";
@@ -110,7 +97,7 @@ if(isset($_POST['Name'])){
 		$result = queryDB($query, $db);	
 		$row = mysqli_fetch_row($result);
 		$EmployerID = $row[0];
-		$query = "insert into UsersEmployment (EmployerID, HourlyWage, TypeofPay, StandardHours, UserID) VALUES ('$EmployerID','$HourlyWage','$PayType','$StdHours','$UserID');";
+		$query = "insert into UsersEmployment (EmployerID, HourlyWage, StandardHours, UserID) VALUES ('$EmployerID','$HourlyWage','$StdHours','$UserID');";
 	}
 	
 	header("Refresh: 0 http://webdev.divms.uiowa.edu/~ngramer/project/");
