@@ -15,7 +15,7 @@
 			<h1>Enter My Hours</h1>
 			<p class="lead">Please enter your hours worked below</p>
 
-		<form action="saveHours.php" class="form-horizontal" method="post">
+		<form action="savehoursdata.php" class="form-horizontal" method="post">
 			<div class="form-group">
 				<div class="row">
 					<label class="col-sm-2 control-label">Start Date</label>				
