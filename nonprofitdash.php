@@ -13,6 +13,7 @@
 			<div class = "row">
 				<div class="panel-body">
 				<table class="table table-bordered table-striped">
+				<h3>Paycheck entries from all users</h3>
 					<!--columns-->
 					<thead>
 					  <tr>
