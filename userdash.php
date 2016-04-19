@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 	if ($result) {
 		echo "<p>your hours was added</p>";
 	} else {
-		punt("<p>Unable to insert your hours "</p>");
+		punt("<p>Unable to insert your hours </p>");
 	}
 }
 ?>
