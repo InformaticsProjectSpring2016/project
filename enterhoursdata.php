@@ -25,11 +25,6 @@
 						    <div class="input-daterange input-group" id="datepicker">
 								<input type="text" class="input-sm form-control" placeholder="MM/DD/YYYY" name="PayPeriodStart" />
 								<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-								
-								<span class="input-group-addon">to</span>
-								
-								<input type="text" class="input-sm form-control" placeholder="MM/DD/YYYY" name="PayPeriodEnd" />
-								<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
 						<!-- END DATE PICKER-->
 					</div>
