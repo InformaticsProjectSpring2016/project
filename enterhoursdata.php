@@ -108,11 +108,6 @@
     todayBtn: "linked",
     todayHighlight: true
 });
-	$('#EndDateContainer .input-group.date').datepicker ({
-    format: "mm/dd/yyyy",
-    todayBtn: "linked",
-    todayHighlight: true
-});
 </script>
 
 <?php
