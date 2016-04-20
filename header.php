@@ -34,14 +34,19 @@
 
 <!-- Check if user is logged in and include PHP configuration -->
 <?php
+include_once("UTILITIES/config.php");
+include_once("UTILITIES/dbutils.php");
 session_start();
 if(isset($_SESSION['Username'])){
 	$loggedIn = True;
+	$UserID = $_SESSION['UserID'];
+	$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
+	$query = "Select AccountType from Users where UserID = '$UserID';";
+	$AccountType = mysqli_fetch_row(queryDB($query, $db))[0];
 }
 else {
 	$loggedIn = False;
 }
-include_once("UTILITIES/config.php");
 ?>
 
 
@@ -74,21 +79,28 @@ include_once("UTILITIES/config.php");
 			echo '
 				<li><a href="enterhoursdata.php">Report Hours Worked</a></li>
 				<li><a href="enterpaycheckdata.php">Report Paycheck Data</a></li>
-				<li><a href="userdash.php">My Data</a></li>
-				<li><a href="nonprofitdash.php">Non-Profit</a></li>';
+				<li><a href="userdash.php">My Data</a></li>';
 		}?>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<?php
 		if(!$loggedIn){
 			echo '
-		  <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>';
+			<li><a href="login.php"><span class="glyphicon glyphicon-lock"></span> Login</a></li>
+			<li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>';
 		}else{
-			echo '
-		  <li><a href="logout.php"><span class="glyphicon glyphicon glyphicon-off"></span> Logout</a></li>';
+			/* Non-Profit */	
+			if($AccountType == 1){
+				echo '<li><a href="nonprofitdash.php"><span class ="glyphicon glyphicon-home"></span>Non-Profit Dashboard</a></li>';
+			}
+			/* Admin */
+			if($AccountType == 0){
+				echo '
+				<li><a href="admindash.php"><span class="glyphicon glyphicon-log-in"></span> Administrator</a></li>';
+			}
+			echo '<li><a href="logout.php"><span class="glyphicon glyphicon glyphicon-off"></span> Logout</a></li>';
 		}
 		?>
-		  <li><a href="admindash.php"><span class="glyphicon glyphicon-log-in"></span> Administrator</a></li>
 		</ul>
 	  </div>
 	</nav>
