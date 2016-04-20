@@ -4,12 +4,11 @@
 	include_once("UTILITIES/config.php");
 	include_once("UTILITIES/dbutils.php");
 	session_start();
-	if(isset($_POST['HoursWorkedStart'])){
+	if(isset($_POST['EntryDate'])){
 		$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 		
-		$HoursWorkedStart = mysqli_real_escape_string($db, $_POST['HoursWorkedStart']);
-		$HoursWorkedEnd = mysqli_real_escape_string($db, $_POST['HoursWorkedEnd']);
-		$HoursWoked = mysqli_real_escape_string($db, $_POST['HoursWoked']);
+		$EntryDate = mysqli_real_escape_string($db, $_POST['EntryDate']);
+		$HoursWorked = mysqli_real_escape_string($db, $_POST['HoursWorked']);
 		$EmployerID = mysqli_real_escape_string($db, $_POST['EmployerID']);
 		$Username = $_SESSION['Username'];
 		
@@ -19,9 +18,10 @@
 		$row = mysqli_fetch_row($result);
 		$UserID = $row[0];
 		
-		$query = "Insert INTO HoursCheckData (HoursWorkedStart,HoursWorkedEnd,HoursWoked,UserID,EmployerID) VALUES ('$HoursWorkedStart','$HoursWorkedEnd','$HoursWoked','$UserID','$EmployerID');";
+		$query = "Insert INTO WageDataEntries (EntryDate,HoursWorked,UserID,EmployerID) VALUES ('$EntryDate','$HoursWorked','$UserID','$EmployerID');";
 		$result = queryDB($query, $db);
 		
 		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/?Hours=1");
 	}
 ?>
+
