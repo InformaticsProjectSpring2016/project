@@ -122,7 +122,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'a','a','a','$1$oxvBpPJm$6qUvF.4OgqvziGk6vMmp11','a@a.com',22,2,6308730098,NULL,'2016-04-13 19:48:24',0),(2,'b','b','b','$1$Bbz0WP4P$Ze9SlUGLfgXYW717u0rFG1','b@b',22,2,3456789012,NULL,'2016-04-13 22:08:47',0),(3,'j','j','j','$1$wJDMmOUv$ngsI1azGyo570pzxCqXF.1','j@j',22,2,6308730098,NULL,'2016-04-14 14:54:25',0);
+INSERT INTO `Users` VALUES (1,'User','User','User','$1$oxvBpPJm$6qUvF.4OgqvziGk6vMmp11','a@a.com',22,2,6308730098,NULL,'2016-04-13 19:48:24',0),(2,'b','b','b','$1$Bbz0WP4P$Ze9SlUGLfgXYW717u0rFG1','b@b',22,2,3456789012,NULL,'2016-04-13 22:08:47',0),(3,'j','j','j','$1$wJDMmOUv$ngsI1azGyo570pzxCqXF.1','j@j',22,2,6308730098,NULL,'2016-04-14 14:54:25',0),(4,'Admin','Admin','admin','$1$CC0s2plv$KuRSJfYVJa9JNtkTnkNJ./','Admin@admin',56,0,6308730098,NULL,'2016-04-20 20:25:57',0),(5,'Non Profit','Non Profit','nonprofit','$1$SbOIYyTA$Lt7gJPI/p0WNEF0UWKuis0','Non@profit',54,1,6308730098,NULL,'2016-04-20 20:26:45',0);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,6 @@ CREATE TABLE `WageDataEntries` (
   `EntryDate` varchar(10) NOT NULL,
   `HoursWorked` int(10) unsigned NOT NULL,
   `EntryDateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  `AmountReceived` decimal(5,2) NOT NULL,
   PRIMARY KEY (`EntryID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
