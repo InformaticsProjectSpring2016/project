@@ -32,7 +32,16 @@
 						
 						if(VerifyPassword($Username, $Password)){
 							session_start();
+							
+							/* Set Username, Name, and UserID in Session variables */
 							$_SESSION['Username'] = $Username;
+							
+							$query = "Select UserID from Users where Username = '$Username';";
+							$_SESSION['UserID'] = mysqli_fetch_row(queryDB($query, $db))[0];
+							
+							$query = "Select FirstName from Users where Username = '$Username';";
+							$_SESSION['FirstName'] = mysqli_fetch_row(queryDB($query, $db))[0];
+							
 							/* Check for active employers */
 							$query = "SELECT * FROM UsersEmployment WHERE UserID = (SELECT UserID from Users where Username = '$Username');";
 							$result = queryDB($query, $db);	
