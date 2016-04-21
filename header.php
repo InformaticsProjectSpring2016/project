@@ -1,9 +1,9 @@
 <html>
 <title><?php echo $pageTitle;?></title>
 <head>
+
 <!-- my css file to change up the container width -->
 <link rel="stylesheet" href= "http://webdev.divms.uiowa.edu/~ngramer/project/mycss.css">
-
 <!-- Latest compiled and minified CSS replacement bootstrap.min.css from bootswatch -->
 <link rel="stylesheet" href="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet/less" type="text/css" href="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/bootswatch.less"> 
@@ -13,23 +13,28 @@
 <!-- add animate -->
 <link rel="stylesheet" href= "http://webdev.divms.uiowa.edu/~ngramer/project/animate.css">
 
-<!-- date picking -->
-<link rel="stylesheet" href="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/css/bootstrap-datepicker.css">
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
- 
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://webdev.divms.uiowa.edu/~ngramer/project/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- date picking -->
+<link rel="stylesheet" href="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/css/bootstrap-datepicker.css">
 <script src="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/js/bootstrap-datepicker.js"></script>
 <script src="http://webdev.divms.uiowa.edu/~ngramer/project/datepicker/locales/bootstrap-datepicker.en-GB.min.js" charset="UTF-8"></script>
+
+ 
+
 
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="google-site-verification" content="2zYKJQnP6p47kekwBybCv97I3UcBso-qF7A3LJvnd44" />
+
+
+
 </head>
 
 <!-- Check if user is logged in and include PHP configuration -->
