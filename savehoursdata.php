@@ -13,15 +13,14 @@
 		$Username = $_SESSION['Username'];
 		
 		/* Get UserID */
-		$query = "Select UserID from Users where Username = '$Username';";
-		$result = queryDB($query, $db);
-		$row = mysqli_fetch_row($result);
-		$UserID = $row[0];
+		$UserID = $_SESSION["UserID"];
 		
 		$query = "Insert INTO WageDataEntries (EntryDate,HoursWorked,UserID,EmployerID) VALUES ('$EntryDate','$HoursWorked','$UserID','$EmployerID');";
 		$result = queryDB($query, $db);
 		
 		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/?Hours=1");
+	}else{
+		echo "not set";
 	}
 ?>
 

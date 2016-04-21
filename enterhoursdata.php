@@ -23,7 +23,7 @@
 					
 						<!-- DATE PICKER -->
 						    <div class="input-daterange input-group" id="datepicker">
-								<input type="text" class="input-sm form-control" placeholder="MM/DD/YYYY" name="PayPeriodStart" />
+								<input type="text" class="input-sm form-control" placeholder="MM/DD/YYYY" name="EntryDate" />
 								<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
 						<!-- END DATE PICKER-->
