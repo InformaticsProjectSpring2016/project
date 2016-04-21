@@ -95,6 +95,7 @@ if (isset($_POST['submit'])) {
 <!-- Titles for table -->
 <thead>
 <tr>
+	<th>User Name</th>
 	<th>Start Date</th>
 	<th>Hours Worked</th>
 	<th>Your Employer</th>
@@ -114,7 +115,8 @@ if (isset($_POST['submit'])) {
 	
 	while($row = nextTuple($result)) {
 		echo "\n <tr>";
-		echo "<td><a href='".$row['UserID']."'>".$row['EntryDate']."</a></td>";
+		echo "<td>" .$row['Username']. "</td>";
+		echo "<td><a href='".$row['Username']."'>".$row['EntryDate']."</a></td>";
 		echo "<td>" . $row['HoursWorked'] . "</td>";
 		echo "<td>" . $row['EmployerID'] . "</td>";	
 		echo "</tr>";
