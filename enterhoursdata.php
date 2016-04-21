@@ -51,7 +51,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Hours Worked</label>
 					<div class="col-sm-8">
-						<input type="number" class="form-control" placeholder="Hours Worked" name="HoursPaid"/>
+						<input type="number" class="form-control" placeholder="Hours Worked" name="HoursWorked"/>
 					</div>
 					<!-- Padding -->
 					<div class="col-sm-2"></div>
