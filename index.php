@@ -21,6 +21,7 @@
 						echo '<p class="lead">You are logged in! New Features coming soon.</p>';	
 						if($_GET["paycheck"] == "1"){
 							echo '<div class="alert alert-success" role="alert">Thanks for adding your paycheck.</div>';
+						}
 						if($_GET["Hours"] == "1"){
 							echo '<div class="alert alert-success" role="alert">Thanks for adding your hours worked.</div>';
 						}
