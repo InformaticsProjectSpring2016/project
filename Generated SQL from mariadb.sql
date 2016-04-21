@@ -167,7 +167,7 @@ CREATE TABLE `WageDataEntries` (
   `HoursWorked` int(10) unsigned NOT NULL,
   `EntryDateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`EntryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,6 +176,7 @@ CREATE TABLE `WageDataEntries` (
 
 LOCK TABLES `WageDataEntries` WRITE;
 /*!40000 ALTER TABLE `WageDataEntries` DISABLE KEYS */;
+INSERT INTO `WageDataEntries` VALUES (1,1,1,'04/19/2016',0,'0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `WageDataEntries` ENABLE KEYS */;
 UNLOCK TABLES;
 
