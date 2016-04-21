@@ -8,4 +8,13 @@ div.datepicker {
 	background-color: #1f1f2e;
 }
 
+div.repeater-header {
+	background-color: #1f1f2e;
+}
+
+.marginTop {
+	padding-top: 35px;
+}
+
 .container.info { animation-delay:0.8s; -moz-animation-delay:0.8s; -webkit-animation-delay:0.8s; }
+
