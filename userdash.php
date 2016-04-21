@@ -2,18 +2,32 @@
 	include_once('UTILITIES/configtz.php');
 	include_once('UTILITIES/dbutils.php');
 	include_once("header.php");
-	$pageTitle = "Report Hours";
+	$pageTitle = "My Data";
 ?>
 
 <?php
-	//connect to database
-	$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
+	session_start();
+	//connect to db
+	if(isset($_POST['EntryDate'])){
+		$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
+		
+		$EntryDate = mysqli_real_escape_string($db, $_POST['EntryDate']);
+		$HoursWorked = mysqli_real_escape_string($db, $_POST['HoursWorked']);
+		$EmployerID = mysqli_real_escape_string($db, $_POST['EmployerID']);
+		$Username = $_SESSION['Username'];
+		
+		/* Get UserID */
+		$query = "Select UserID from Users where Username = '$Username';";
+		$result = queryDB($query, $db);
+		$row = mysqli_fetch_row($result);
+		$UserID = $row[0];
+		//set up my query
+		$query = "Insert INTO WageDataEntries (EntryDate,HoursWorked,UserID,EmployerID) VALUES ('$EntryDate','$HoursWorked','$UserID','$EmployerID');";
+		//run the query
+		$result = queryDB($query, $db);
+		
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/?Hours=1");
 	
-	// set up my query
-	$query = "SELECT id, startDate, endDate, hoursWorked, yourEmployer FROM enterHours ORDER BY id;";
-	
-	// run the query
-	$result = queryDB($query, $db);
 ?>
 
 <div class = "col-xs-2"></div> <!-- Used to push jumbotron smaller and to the right -->
@@ -39,22 +53,20 @@ if (isset($_POST['submit'])) {
 //	print_r($_POST);
 
 	// get data from the input fields
-	$startDate = $_POST['startDate'];
-	$endDate = $_POST['endDate'];
-	$hoursWorked = $_POST['hoursWorked'];
-	$yourEmployer = $_POST['yourEmployer'];
+	$EntryDate = $_POST['EntryDate'];
+	$HoursWorked = $_POST['HoursWorked'];
+	$EmployerID = $_POST['EmployerID'];
 	
 	// check to make sure we have start date
 	if (!$startDate) {
-		punt("Please enter a start date");
+		punt("Please enter a Start Date");
 	}
 	
 	// connect to database
 	$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 	
 	// set up my query, id is not insert but created in the database
-	$query = "INSERT INTO enterHours(startDate, endDate, hoursWorked, yourEmployer) VALUES ('$startDate', '$endDate', '$hoursWorked', '$yourEmployer');";
-	
+	$query = "Insert INTO WageDataEntries (EntryDate,HoursWorked,UserID,EmployerID) VALUES ('$EntryDate','$HoursWorked','$UserID','$EmployerID');";
 	// run the query
 	$result = queryDB($query, $db);
 	
@@ -84,7 +96,6 @@ if (isset($_POST['submit'])) {
 <thead>
 <tr>
 	<th>Start Date</th>
-	<th>End Date</th>
 	<th>Hours Worked</th>
 	<th>Your Employer</th>
 </tr>
@@ -96,16 +107,16 @@ if (isset($_POST['submit'])) {
 	$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 	
 	// set up my query
-	$query = "SELECT * FROM hoursWorked ORDER BY id;";
+	$query = "SELECT * FROM WageDataEntries ORDER BY UserID;";
 	
 	// run the query
 	$result = queryDB($query, $db);
 	
 	while($row = nextTuple($result)) {
 		echo "\n <tr>";
-		echo "<td><a href='".$row['yourEmployer']."'>".$row['startDate']."</a></td>";
-		echo "<td>" . $row['endDate'] . "</td>";
-		echo "<td>" . $row['hoursWorked'] . "</td>";	
+		echo "<td><a href='".$row['UserID']."'>".$row['EntryDate']."</a></td>";
+		echo "<td>" . $row['HoursWorked'] . "</td>";
+		echo "<td>" . $row['EmployerID'] . "</td>";	
 		echo "</tr>";
 	}
 ?>
