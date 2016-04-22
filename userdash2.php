@@ -64,7 +64,7 @@
 				</table>
 		
 		<!--See jobs user has registered-->
-		<<div class = "row">
+		<div class = "row">
 				<div class="panel-body">
 				<table class="table table-bordered table-striped">
 				<h3>My Jobs</h3>
