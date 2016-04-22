@@ -10,6 +10,14 @@
 	<div class="text-center">
 		<div class="jumbotron">
 			<h1>User Dashboard</h1>
+			<div>
+				<form method="link" action="addemployment.php"> 
+					<input type="submit" class="btn btn-success btn-lg" value="Add Another Job">
+				</form>
+				<!--<button type="submit"  action class="btn btn-success btn-lg" name="submit">Register</button>-->
+			</div>
+			
+			<!--list of user data-->
 			<div class = "row">
 				<div class="panel-body">
 				<table class="table table-bordered table-striped">
@@ -55,97 +63,6 @@
 					?>
 					</tbody>
 				</table>
-				
-				<!--Add another job section-->
-				<div class="text-center">
-					<h2>Add Another Employer</h2>
-					<p class="lead">Please enter employment your information below.</p>
-					
-				<form id="New Employment" action="<?php echo $_SERVER['PHP_SELF'];?>" class="form-horizontal" method="post">
-					<div class="row">
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Employer</label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="Employer" name="Name" required>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Employer Street Address</label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="Street Address" name="EmployerAddress" required>
-							</div>
-						</div>
-					</div>
-										
-					<div class="row">
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Hourly Wage</label>
-							<div class="col-sm-8">
-								<input type="number" class="form-control" placeholder="$x.xx" name="HourlyWage" required>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Normal Hours Worked</label>
-							<div class="col-sm-8">
-								<input type="number" class="form-control" placeholder="Standard Number of Hours worked per day" name="StdHours" required>
-							</div>
-						</div>
-					</div>
-					
-					<button type="submit" class="btn btn-success btn-lg" name="submit">Register</button>
-				</form>
-		</div>
-			</div>
-		</div> <!-- Jumbotron -->
-	</div>
-</div> <!-- Container -->
-
-<?php
-if(isset($_POST['Name'])){
-	$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
-	$Name = mysqli_real_escape_string($db, $_POST['Name']);
-	$EmployerAddress = mysqli_real_escape_string($db, $_POST['EmployerAddress']);
-	$HourlyWage = mysqli_real_escape_string($db, $_POST['HourlyWage']);
-	$StdHours = mysqli_real_escape_string($db, $_POST['StdHours']);
-	
-	
-	$query = "Select * from Employers where Name = '$Name' and Location = '$EmployerAddress';";
-	$result = queryDB($query, $db);	
-	$UserName = $_SESSION['Username'];
-	if(nTuples($result) == 0){
-		$query = "insert into Employers (Name, Location) VALUES ('$Name','$EmployerAddress');";
-		$result = queryDB($query, $db);
-		$query = "Select UserID from Users where Username = '$UserName';";
-		$result = queryDB($query, $db);
-		$row = mysqli_fetch_row($result);
-		$UserID = $row[0];
-		$query = "Select EmployerID from Employers where Name = '$Name' and Location = '$EmployerAddress';";
-		$result = queryDB($query, $db);	
-		$row = mysqli_fetch_row($result);
-		$EmployerID = $row[0];
-		$query = "insert into UsersEmployment (EmployerID, HourlyWage, StandardHours, UserID) VALUES ('$EmployerID','$HourlyWage','$StdHours','$UserID');";
-		$result = queryDB($query, $db);
-	}else{
-		$query = "Select UserID from Users where Username = '$UserName';";
-		$result = queryDB($query, $db);
-		$row = mysqli_fetch_row($result);
-		$UserID = $row[0];
-		$query = "Select EmployerID from Employers where Name = '$Name' and Location = '$EmployerAddress';";
-		$result = queryDB($query, $db);	
-		$row = mysqli_fetch_row($result);
-		$EmployerID = $row[0];
-		$query = "insert into UsersEmployment (EmployerID, HourlyWage, StandardHours, UserID) VALUES ('$EmployerID','$HourlyWage','$StdHours','$UserID');";
-	}
-	
-	header("Refresh: 0 http://webdev.divms.uiowa.edu/~ngramer/project/");
-}
-?>
 
 <?php
 	ob_end_flush( );
