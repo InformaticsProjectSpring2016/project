@@ -18,6 +18,7 @@
 			<li class="active"><a href="#Users" data-toggle="pill">Users</a></li>
 			<li><a href="#Paycheck" data-toggle="pill">Paycheck Data</a></li>
 			<li><a href="#Hourly" data-toggle="pill">Hourly Data</a></li>
+			<li><a href="#Employers" data-toggle="pill">Employers</a></li>
 		</ul>
 	</div>
 	<div class="col-md-10">
@@ -193,6 +194,52 @@
 			</table>
 			</div>
 		</div><!-- Hourly Entry Panel End -->
+		
+			<!-- EMPLOYERS TAB -->
+			<div class="tab-pane" id="Employers">
+				<div class="panel-body">
+				<table class="table table-bordered table-striped">
+				<h3>All submitted Employers</h3>
+					<!--columns-->
+					<thead>
+					  <tr>
+						<th>EmployerID</th>
+						<th>Name</th>
+						<th>Location</th>
+					  </tr>
+					</thead>
+					<!--rows-->
+					<tbody>
+					<?php			
+						// get a handle to the database
+						$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
+						// prep query
+						$query = "Select * From Employers;";
+							
+						// execute sql statement
+						$result = queryDB($query, $db);
+						
+						// check if it worked
+						
+						if (nTuples($result)> 0) {
+						//output data of each row
+							while($row = mysqli_fetch_row($result)) {
+								echo "
+								<tr>
+									<th>". $row[0] . "</th>
+									<th>" . $row[1] . "</th> 
+									<th>" . $row[2] . "</th>
+								</tr>";
+							}
+						} else {
+							echo "0 results";
+						}
+
+						?>
+					</tbody>
+				</table>
+				</div>
+			</div><!-- Employer List Panel End -->
 		</div> <!-- Tab Content -->
 	</div> <!-- Column -->
 </div> 
