@@ -37,7 +37,8 @@
 						// get a handle to the database
 						$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 						// prep query
-						$query = "Select u.FirstName, p.EntryDate, p.HoursWorked, e.Name from WageDataEntries p INNER JOIN Employers e ON (p.EmployerID = e.EmployerID) INNER JOIN Users u ON (p.UserID = u.UserID);";
+						$UserID = $_SESSION['UserID'];
+						$query = "Select u.FirstName, p.EntryDate, p.HoursWorked, e.Name from WageDataEntries p INNER JOIN Employers e ON (p.EmployerID = e.EmployerID) INNER JOIN Users u ON (p.UserID = u.UserID) where p.UserID = '$UserID';";
 							
 						// execute sql statement
 						$result = queryDB($query, $db);
@@ -84,7 +85,8 @@
 						// get a handle to the database
 						$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 						// prep query
-						$query = "Select e.Name, e.Location, u.HourlyWage, u.StandardHours from Employers e INNER JOIN UsersEmployment u ON (e.EmployerID = u.EmployerID) ORDER BY u.UserID;";
+						$UserID = $_SESSION['UserID'];
+						$query = "Select e.Name, e.Location, u.HourlyWage, u.StandardHours from Employers e INNER JOIN UsersEmployment u ON (e.EmployerID = u.EmployerID) where u.UserID = '$UserID' ORDER BY u.UserID;";
 							
 						// execute sql statement
 						$result = queryDB($query, $db);
