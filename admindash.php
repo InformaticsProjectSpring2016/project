@@ -65,7 +65,7 @@
 								}
 								
 								echo "
-								<tr>
+								<tr class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>
 									<th>". $row[0] . "</th>
 									<th>" . $row[1] . "</th> 
 									<th>" . $row[2] . "</th>
@@ -226,9 +226,9 @@
 							while($row = mysqli_fetch_row($result)) {
 								echo "
 								<tr>
-									<th>". $row[0] . "</th>
-									<th>" . $row[1] . "</th> 
-									<th>" . $row[2] . "</th>
+									<th>". $row[2] . "</th>
+									<th>" . $row[0] . "</th> 
+									<th>" . $row[1] . "</th>
 								</tr>";
 							}
 						} else {
@@ -244,7 +244,13 @@
 	</div> <!-- Column -->
 </div> 
 
-
+<script>
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
 <script>
 function staticDataSource(options, callback) {
 
