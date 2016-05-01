@@ -2,6 +2,10 @@
 	$menuHighlight = 0;
 	$pageTitle="Enter Paycheck";
 	include_once("header.php");
+	/* Check if user is logged in */
+	if(!$loggedIn){
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0");
+	}
 	include_once("UTILITIES/config.php");
 	include_once("UTILITIES/dbutils.php");
 ?>

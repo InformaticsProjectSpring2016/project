@@ -2,6 +2,12 @@
 	$menuHighlight = 0;
 	$pageTitle="Non-Profit Dashboard";
 	include_once("header.php");
+	/* Check for a logged in nonprofit */
+	if($_SESSION['AccountType'] != 0 && $loggedIn){
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/index.php?authorized=0");
+	}else{
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0");
+	}
 	include_once("UTILITIES/config.php");
 	include_once("UTILITIES/dbutils.php");
 ?>
