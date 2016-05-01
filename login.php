@@ -19,6 +19,9 @@
 				if($_GET["register"] == "1"){
 					echo '<div class="alert alert-success" role="alert">Welcome! Please login now.</div>';
 				}
+				if($_GET["authorized"] == "0"){
+					echo '<div class="alert alert-danger animated fadeIn" role="alert">You are not authorized to view this page. Please log in and try again.</div>';
+				}
 			?>
 			
 			<form action="<?php echo $_SERVER['PHP_SELF'];?>" class="form-horizontal" method="post">
@@ -33,11 +36,14 @@
 						if(VerifyPassword($Username, $Password)){
 							session_start();
 							
-							/* Set Username, Name, and UserID in Session variables */
+							/* Set Username, Name, AccountType,, and UserID in Session variables */
 							$_SESSION['Username'] = $Username;
 							
 							$query = "Select UserID from Users where Username = '$Username';";
 							$_SESSION['UserID'] = mysqli_fetch_row(queryDB($query, $db))[0];
+							
+							$query = "Select AccountType from Users where Username = '$Username';";
+							$_SESSION['AccountType'] = mysqli_fetch_row(queryDB($query, $db))[0];
 							
 							$query = "Select FirstName from Users where Username = '$Username';";
 							$_SESSION['FirstName'] = mysqli_fetch_row(queryDB($query, $db))[0];
@@ -45,7 +51,7 @@
 							/* Check for active employers */
 							$query = "SELECT * FROM UsersEmployment WHERE UserID = (SELECT UserID from Users where Username = '$Username');";
 							$result = queryDB($query, $db);	
-							if(nTuples($result) == 0){
+							if(nTuples($result) == 0 && $_SESSION['AccountType'] != 0){
 								header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/addemployment.php");
 							}else{
 								header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/");	
