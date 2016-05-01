@@ -17,14 +17,18 @@
 						echo '<p class="lead">Please login or register to begin.</p>
 						<a href ="login.php" class="btn btn-success btn-lg" role="button" >Login</a>
 						<a href ="register.php" class="btn btn-info btn-lg" role="button" >Register</a>';
-					}else{
-						echo '<p class="lead">You are logged in! New Features coming soon.</p>';	
+						
+					}else{	
 						if($_GET["paycheck"] == "1"){
-							echo '<div class="alert alert-success" role="alert">Thanks for adding your paycheck.</div>';
+							echo '<div class="alert alert-success animated fadeIn" role="alert">Thanks for adding your paycheck.</div>';
 						}
 						if($_GET["Hours"] == "1"){
-							echo '<div class="alert alert-success" role="alert">Thanks for adding your hours worked.</div>';
+							echo '<div class="alert alert-success animated fadeIn" role="alert">Thanks for adding your hours worked.</div>';
 						}
+						if($_GET["authorized"] == "0"){
+							echo '<div class="alert alert-danger animated fadeIn" role="alert">You are not authorized to view this page.</div>';
+						}
+						echo '<p class="lead">You are logged in! New Features coming soon.</p>';
 					}
 				?>
 			</div>
