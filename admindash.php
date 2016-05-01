@@ -1,8 +1,14 @@
 <?php
 	$menuHighlight = 0;
-	$pageTitle="Administrator Dashboard";
 	include_once("header.php");
-
+	/* Check for a logged in administrator */
+	if($_SESSION['AccountType'] != 0 && $loggedIn){
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/index.php?authorized=0");
+	}else{
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0");
+	}
+	$pageTitle="Administrator Dashboard";
+	
 ?>
 
 <div class = "container">
@@ -23,8 +29,17 @@
 	</div>
 	<div class="col-md-10">
 		<div class="tab-content">
+		<!-- Users Tab --> 
 			<div class="tab-pane active" id="Users">
+			<!-- Php for echoing out successful user update -->
+			<?php
+				if($_GET["update"] == "1"){
+					echo '<div class="alert alert-success animated fadeIn" role="alert">Users Updated.</div>';
+				}
+			?>
 				<div class="panel-body">
+				<!-- Start hacky form  that will update all users at once-->
+				<form action="updateusers.php" method='post'>
 				<table class="table table-bordered table-striped">
 				<h3>All Users</h3>
 					<!--columns-->
@@ -34,7 +49,8 @@
 						<th>Username</th>
 						<th>First Name</th>
 						<th>Last Name</th>
-						<th>Account Type</th>
+						<th>Current Account Type</th>
+						<th>Update Account Type</th>
 						<th>Email</th>
 					  </tr>
 					</thead>
@@ -49,8 +65,7 @@
 						// execute sql statement
 						$result = queryDB($query, $db);
 						
-						// check if it worked
-						
+											
 						if (nTuples($result)> 0) {
 						//output data of each row
 							while($row = mysqli_fetch_row($result)) {
@@ -63,15 +78,23 @@
 								if($row[4] == 2){
 									$AccountType = 'User';
 								}
-								
+								$UserID = $row[0];
 								echo "
-								<tr class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>
-									<th>". $row[0] . "</th>
-									<th>" . $row[1] . "</th> 
-									<th>" . $row[2] . "</th>
-									<th>" . $row[3] . "</th>
-									<th>" . $AccountType . "</th>
-									<th>" . $row[5] . "</th>
+								<tr>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>". $row[0] . "</td>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>" . $row[1] . "</td> 
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>" . $row[2] . "</td>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>" . $row[3] . "</td>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>" . $AccountType . "</td>
+									<td>
+									    <select name='$UserID' id ='$UserID'>
+											<option disabled selected value>Select an Account Type</option>
+											<option value='0'>Administrator</option>
+											<option value='1'>Non-Profit</option>
+											<option value='2'>User</option>
+										</select>
+									</td>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/administrateuser.php?user=". $row[0] ."'>" . $row[5] . "</td>
 								</tr>";
 							}
 						} else {
@@ -81,6 +104,8 @@
 						?>
 						</tbody>
 					</table>
+					<div class="text-center"><button type="submit" class="btn btn-success btn-lg" name="submit">Update</button></div>
+					</form>
 				</div>
 			</div>
 		<!-- END HOME USER TAB -->
@@ -121,13 +146,13 @@
 						while($row = mysqli_fetch_row($result)) {
 							echo "
 							<tr>
-								<th>". $row[0] . "</th>
-								<th>" . $row[1] . "</th> 
-								<th>" . $row[2] . "</th>
-								<th>" . $row[3] . "</th>
-								<th>" . $row[4] . "</th>
-								<th>" . $row[5] . "</th>
-								<th>" . $row[6] . "</th>
+								<td>". $row[0] . "</td>
+								<td>" . $row[1] . "</td> 
+								<td>" . $row[2] . "</td>
+								<td>" . $row[3] . "</td>
+								<td>" . $row[4] . "</td>
+								<td>" . $row[5] . "</td>
+								<td>" . $row[6] . "</td>
 							</tr>";
 						}
 					} else {
@@ -176,13 +201,13 @@
 						while($row = mysqli_fetch_row($result)) {
 							echo "
 							<tr>
-								<th>". $row[0] . "</th>
-								<th>" . $row[1] . "</th> 
-								<th>" . $row[2] . "</th>
-								<th>" . $row[3] . "</th>
-								<th>" . $row[4] . "</th>
-								<th>" . $row[5] . "</th>
-								<th>" . $row[6] . "</th>
+								<td>". $row[0] . "</td>
+								<td>" . $row[1] . "</td> 
+								<td>" . $row[2] . "</td>
+								<td>" . $row[3] . "</td>
+								<td>" . $row[4] . "</td>
+								<td>" . $row[5] . "</td>
+								<td>" . $row[6] . "</td>
 							</tr>";
 						}
 					} else {
@@ -226,9 +251,9 @@
 							while($row = mysqli_fetch_row($result)) {
 								echo "
 								<tr>
-									<th>". $row[2] . "</th>
-									<th>" . $row[0] . "</th> 
-									<th>" . $row[1] . "</th>
+									<td>". $row[2] . "</td>
+									<td>" . $row[0] . "</td> 
+									<td>" . $row[1] . "</td>
 								</tr>";
 							}
 						} else {
@@ -250,51 +275,6 @@ jQuery(document).ready(function($) {
         window.document.location = $(this).data("href");
     });
 });
-</script>
-<script>
-function staticDataSource(options, callback) {
-
-  // define the columns for the grid
-  var columns = [
-    {
-      'label': 'Username',      // column header label
-      'property': 'username',   // the JSON property you are binding to
-      'sortable': true      // is the column sortable?
-    },
-    {
-      'label': 'First Name',
-      'property': 'First Name',
-      'sortable': true
-    },
-    {
-      'label': 'UserID',
-      'property': 'UserID',
-      'sortable': true
-    },
-    {
-      'label': 'Account Type',
-      'property': 'Account Type',
-      'sortable': true
-    }
-	{
-      'label': 'Email',
-      'property': 'Email',
-      'sortable': true
-    }
-	
-  // transform array
-  var pageIndex = options.pageIndex;
-  var pageSize = options.pageSize;
-  var totalItems = items.length;
-  var totalPages = Math.ceil(totalItems / pageSize);
-  var startIndex = (pageIndex * pageSize) + 1;
-  var endIndex = (startIndex + pageSize) - 1;
-  if (endIndex > items.length) {
-    endIndex = items.length;
-  }
-
-  var rows = items.slice(startIndex - 1, endIndex);
-  ];
 </script>
 <?php
 	include_once("footer.php");

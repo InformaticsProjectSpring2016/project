@@ -2,6 +2,12 @@
 	$menuHighlight = 0;
 	$pageTitle="Administrator Dashboard";
 	include_once("header.php");
+	/* Check for a logged in administrator */
+	if($_SESSION['AccountType'] != 0 && $loggedIn){
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/index.php?authorized=0");
+	}else{
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0");
+	}
 	ob_start();
 ?>
 
@@ -10,7 +16,7 @@
 
 	<div class="col-md-12">
 	<div class="text-center">
-		<h1>Administrator Dashboard</h1>
+		<h1>Change User Details</h1>
 	</div>
 	</div>
 	<!-- Navigation Buttons -->
@@ -29,8 +35,11 @@
 			
 		// execute sql statement
 		$result = queryDB($query, $db);
-		$row = mysqli_fetch_row($result);
 		$assocrow = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		//$row = mysqli_fetch_row($result);
+/* 		foreach($assocrow as $key => $value){
+			echo $key . "	" . $value . "<br>";
+		} */
 		if (nTuples($result)> 0) {
 			//output data of each row
 				while($row = mysqli_fetch_row($result)) {
@@ -45,11 +54,13 @@
 					}
 				}
 		}
-	
+		
 	?>
 	<!-- User Adminstrate Area -->
 	<div class="col-md-10">
-		<form id="register" action="<?php echo $_SERVER['PHP_SELF'];?>" class="form-horizontal" method="post">
+		<form id="register" action="updatesingleuser.php" class="form-horizontal" method="post">
+		<!-- Send UserID through posted form -->
+		<?php echo "<input type='hidden' name='UserID' id='UserID' value='$UserID'/>"; ?>
 			<div class="row">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">First Name</label>
@@ -89,44 +100,15 @@
 					</div>
 				</div>
 			</div>
+			<div class="text-center">
 			<button type="submit" class="btn btn-success btn-lg" name="submit">Update</button>
-			<button type="warning" class="btn btn-success btn-lg" name="cancel" href="webdev.divms.uiowa.edu/~ngramer/project/admindash.php">Cancel</button>
+			<button type="warning" class="btn btn-success btn-lg" name="cancel" href="webdev.divms.uiowa.edu/~ngramer/project/admindash.php">Cancel</button> 
+			</div>
 		</form>
 	</div>
 </div>
 
-<?php
-	if(isset($_POST['Firstname'])){
-		$Firstname = mysqli_real_escape_string($db, $_POST['Firstname']);
-		$query = "UPDATE Users SET FirstName = '$Firstname' where UserID = '$UserID';";
-			
-		// execute sql statement
-		$result = queryDB($query, $db);
-	}
-	if(isset($_POST['Lastname'])){
-		$Lastname = mysqli_real_escape_string($db, $_POST['Lastname']);
-		$query = "UPDATE Users SET LastName = '$Lastname' where UserID = '$UserID';";
-			
-		// execute sql statement
-		$result = queryDB($query, $db);	
-	}
-	if(isset($_POST['AccountType'])){
-		$AccountType = mysqli_real_escape_string($db, $_POST['AccountType']);
-		$query = "UPDATE Users SET AccountType = '$AccountType' where UserID = '$UserID';";
-			
-		// execute sql statement
-		$result = queryDB($query, $db);	
-	}
-	if(isset($_POST['Email'])){
-		$Email = mysqli_real_escape_string($db, $_POST['Email']);
-		$query = "UPDATE Users SET Email = '$Email' where UserID = '$UserID';";
-			
-		// execute sql statement
-		$result = queryDB($query, $db);		
-	}
-	//header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/admindash.php");
-	
-?>
+
 
 <?php
 	include_once("footer.php");
