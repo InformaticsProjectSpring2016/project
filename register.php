@@ -37,7 +37,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Age</label>
 					<div class="col-sm-8">
-						<input type="number" class="form-control" placeholder="Age" name="Age" required>
+						<input type="number" class="form-control" placeholder="Age" name="Age" required maxlength="3">
 					</div>
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Username</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="Username" name="Username" required>
+						<input type="text" class="form-control" placeholder="Username" name="Username" required maxlength="15">
 					</div>
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" placeholder="Password" name="Password1" required>
+						<input type="password" class="form-control" placeholder="Password" name="Password1" required maxlength="15">
 					</div>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Confirm Password</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" placeholder="Confirm Password" name="Password2" required>
+						<input type="password" class="form-control" placeholder="Confirm Password" name="Password2" required maxlength="15">
 					</div>
 				</div>
 			</div>
