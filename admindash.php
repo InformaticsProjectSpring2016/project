@@ -2,10 +2,11 @@
 	$menuHighlight = 0;
 	include_once("header.php");
 	/* Check for a logged in administrator */
-	if($_SESSION['AccountType'] != 0 && $loggedIn){
+	if($_SESSION['AccountType'] != 0 && $loggedIn){	
 		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/index.php?authorized=0");
-	}else{
-		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0");
+	}
+	if(!$loggedIn){
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0" .$AccountType);
 	}
 	$pageTitle="Administrator Dashboard";
 	
