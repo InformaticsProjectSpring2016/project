@@ -23,7 +23,7 @@
 	<!-- Navigation Buttons -->
 	<div class="col-md-2">
 		<ul class="nav nav-pills nav-stacked marginTop" id="myTabs">
-			<li class="active"><a href="http://webdev.divms.uiowa.edu/~ngramer/project/admindash.php" data-toggle="pill">Go Back</a></li>
+			<li class="active"><a href="http://webdev.divms.uiowa.edu/~ngramer/project/admindash.php">Go Back</a></li>
 		</ul>
 	</div>
 	
@@ -41,20 +41,7 @@
 /* 		foreach($assocrow as $key => $value){
 			echo $key . "	" . $value . "<br>";
 		} */
-		if (nTuples($result)> 0) {
-			//output data of each row
-				while($row = mysqli_fetch_row($result)) {
-					if($row[4] == 0){
-						$AccountType = 'Administrator';
-					}
-					if($row[4] == 1){
-						$AccountType = 'Non-Profit User';
-					}
-					if($row[4] == 2){
-						$AccountType = 'User';
-					}
-				}
-		}
+
 		
 	?>
 	<!-- User Adminstrate Area -->
@@ -66,7 +53,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">First Name</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="<?php echo $assocrow['FirstName'];?>" name="Firstname">
+						<input type="text" class="form-control" placeholder="<?php echo $assocrow['FirstName'];?>" value="<?php echo $assocrow['FirstName'];?>" name="Firstname">
 					</div>
 				</div>
 			</div>
@@ -75,7 +62,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Last Name</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="<?php echo $assocrow['LastName'];?>" name="Lastname">
+						<input type="text" class="form-control" placeholder="<?php echo $assocrow['LastName'];?>" value="<?php echo $assocrow['LastName'];?>" name="Lastname">
 					</div>
 				</div>
 			</div>
@@ -85,9 +72,9 @@
 					<label class="col-sm-2 control-label">Account Type</label>
 					<div class="col-sm-8">
 						<select name="AccountType">
-							<option value ="2">User</option>
-							<option value ="1">Non-Profit</option>
-							<option value ="0">Administrator</option>
+							<option value ="2" <?php if($assocrow['AccountType'] == 2){echo "selected";}?>>User</option>
+							<option value ="1" <?php if($assocrow['AccountType'] == 1){echo "selected";}?>>Non-Profit</option>
+							<option value ="00" <?php if($assocrow['AccountType'] == 0){echo "selected";}?>>Administrator</option>
 						</select>
 					</div>
 				</div>
@@ -97,13 +84,13 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="<?php echo $assocrow['Email'];?>" name="Email">
+						<input type="text" class="form-control" placeholder="<?php echo $assocrow['Email'];?>" value="<?php echo $assocrow['Email'];?>" name="Email">
 					</div>
 				</div>
 			</div>
 			<div class="text-center">
 			<button type="submit" class="btn btn-success btn-lg" name="submit">Update</button>
-			<button type="warning" class="btn btn-success btn-lg" name="cancel" href="webdev.divms.uiowa.edu/~ngramer/project/admindash.php">Cancel</button> 
+			<a href="http://webdev.divms.uiowa.edu/~ngramer/project/admindash.php"><button type="button" class="btn btn-warning btn-lg" name="cancel">Cancel</button></a>
 			</div>
 		</form>
 	</div>

@@ -295,7 +295,7 @@
 			</div><!-- Employer List Panel End -->
 		</div> <!-- Tab Content -->
 
-
+<!-- Makes table rows Clickable -->
 <script>
 jQuery(document).ready(function($) {
     $(".clickable-row").click(function() {

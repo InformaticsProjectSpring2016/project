@@ -23,7 +23,7 @@
 	<!-- Navigation Buttons -->
 	<div class="col-md-2">
 		<ul class="nav nav-pills nav-stacked marginTop" id="myTabs">
-			<li role="presentation"><a href="http://webdev.divms.uiowa.edu/~ngramer/project/nonprofitdash.php" data-toggle="pill">Go Back</a></li>
+			<li class="alert-warning" role="presentation"><a href="http://webdev.divms.uiowa.edu/~ngramer/project/nonprofitdash.php">Go Back</a></li>
 			<li class="active"><a href="#Data" data-toggle="pill">User's Data</a></li>
 			<li><a href="#Jobs" data-toggle="pill">User's Jobs</a></li>
 			<li><a href="#Email" data-toggle="pill">Email this user</a></li>
@@ -336,11 +336,15 @@
 		</div><!-- End Email Tab --> 
 		</div> <!-- End tab content -->
 	</div>
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $('myTabs').tab();
+<!-- Makes table rows Clickable -->
+<script>
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        $('#Data').removeClass('active');
+		$('#Email').addClass('active');
     });
-</script>    
+});
+</script>
 
 <?php
 include_once("footer.php")

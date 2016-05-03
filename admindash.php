@@ -91,7 +91,7 @@
 									<td>
 									    <select name='$UserID' id ='$UserID'>
 											<option disabled selected value>Select an Account Type</option>
-											<option value='0'>Administrator</option>
+											<option value='00'>Administrator</option>
 											<option value='1'>Non-Profit</option>
 											<option value='2'>User</option>
 										</select>
