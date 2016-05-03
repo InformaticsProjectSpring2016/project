@@ -289,7 +289,7 @@
 								<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewuserdata.php?UserID=". $row['UserID'] ."'>" . $row['PayPeriodEnd'] . "</td>
 							</tr>";}
 					}else{
-						echo "<h1>No Problem Users Found</h1>";
+						echo "0 results";
 					}
 				?>
 				</tbody>
