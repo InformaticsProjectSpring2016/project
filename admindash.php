@@ -28,6 +28,7 @@
 			<li><a href="#Employers" data-toggle="pill">Employers</a></li>
 		</ul>
 	</div>
+	<!-- Begin content container -->
 	<div class="col-md-10">
 		<div class="tab-content">
 		<!-- Users Tab --> 
