@@ -64,7 +64,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Username</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="Username" name="Username" required maxlength="15">
+						<input type="text" class="form-control" name="Username" placeholder="Username must be between 8 and 20 characters" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
 					</div>
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" placeholder="Password" name="Password1" required maxlength="15">
+						<input type="password" class="form-control" name="Password1" placeholder="Password must contain 1 uppercase, lowercase and number" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
 					</div>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Confirm Password</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" placeholder="Confirm Password" name="Password2" required maxlength="15">
+						<input type="password" class="form-control" placeholder="Confirm Password" name="Password2" required maxlength="25">
 					</div>
 				</div>
 			</div>
