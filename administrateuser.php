@@ -7,7 +7,7 @@
 		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/index.php?authorized=0");
 	}
 	if(!$loggedIn){
-		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0" .$AccountType);
+		header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/login.php?authorized=0");
 	}
 	ob_start();
 ?>
