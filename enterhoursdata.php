@@ -81,7 +81,15 @@
 								if (nTuples($result)> 0) {
 									//output data of each row, 1 is the actual employer id
 									while($row = mysqli_fetch_row($result)) {
-										echo '<option value ="'. $row[1] . '">'. $row[0] .'</option>';
+										if(isset($_GET['employer'])){
+											if($_GET['employer'] == $row[1]){
+												echo '<option value ="'. $row[1] . '" selected>'. $row[0] .'</option>';
+											}else{
+												echo '<option value ="'. $row[1] . '">'. $row[0] .'</option>';
+											}
+										}else{
+											echo '<option value ="'. $row[1] . '">'. $row[0] .'</option>';
+										} 
 									}
 								}
 								else{
