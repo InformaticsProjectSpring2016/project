@@ -47,13 +47,13 @@
 					<!--columns-->
 					<thead>
 					  <tr>
-						<th>UserID</th>
-						<th>Username</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Current Account Type</th>
-						<th>Update Account Type</th>
-						<th>Email</th>
+						<td>UserID</td>
+						<td>Username</td>
+						<td>First Name</td>
+						<td>Last Name</td>
+						<td>Current Account Type</td>
+						<td>Update Account Type</td>
+						<td>Email</td>
 					  </tr>
 					</thead>
 					<!--rows-->
@@ -121,13 +121,13 @@
 				<!--columns-->
 				<thead>
 				  <tr>
-					<th>PaycheckID</th>
-					<th>Pay Period Start</th>
-					<th>Pay Period End</th>
-					<th>Hours</th>
-					<th>Amount Paid</th>
-					<th>Employer Name</th>
-					<th>User's Name</th>
+					<td>PaycheckID</td>
+					<td>Pay Period Start</td>
+					<td>Pay Period End</td>
+					<td>Hours</td>
+					<td>Amount Paid</td>
+					<td>Employer Name</td>
+					<td>User's Name</td>
 				  </tr>
 				</thead>
 				<!--rows-->
@@ -176,13 +176,13 @@
 				<!--columns-->
 				<thead>
 				  <tr>
-					<th>EntryID</th>
-					<th>Entry Date</th>
-					<th>Hours Worked</th>
-					<th>Employer Name</th>
-					<th>Amount Paid</th>
-					<th>First Name</th>
-					<th>UserID</th>
+					<td>EntryID</td>
+					<td>Entry Date</td>
+					<td>Hours Worked</td>
+					<td>Employer Name</td>
+					<td>Amount Paid</td>
+					<td>First Name</td>
+					<td>UserID</td>
 				  </tr>
 				</thead>
 				<!--rows-->
@@ -230,9 +230,9 @@
 					<!--columns-->
 					<thead>
 					  <tr>
-						<th>EmployerID</th>
-						<th>Name</th>
-						<th>Location</th>
+						<td>EmployerID</td>
+						<td>Name</td>
+						<td>Location</td>
 					  </tr>
 					</thead>
 					<!--rows-->
