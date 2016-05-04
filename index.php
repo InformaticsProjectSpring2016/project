@@ -28,9 +28,17 @@
 						if($_GET["authorized"] == "0"){
 							echo '<div class="alert alert-danger animated fadeIn" role="alert">You are not authorized to view this page.</div>';
 						}
-						echo '<p class="lead">You are logged in! New Features coming soon.</p>';
+						echo '<p class="lead">You are logged in!.</p>';
 					}
 				?>
+				<h2>Quick Report: </h2>
+					<form method="link" action="enterhoursdata.php"> 
+						<input type="submit" class="btn btn-info btn-lg" value="Walmart"> &nbsp
+						<input type="submit" class="btn btn-danger btn-lg" value="Hyvee"> &nbsp
+						<input type="submit" class="btn btn-success btn-lg" value="Menards"> &nbsp
+						<input type="submit" class="btn btn-primary btn-lg" value="Walgreens"> &nbsp
+						<input type="submit" class="btn btn-warning btn-lg" value="Target"> &nbsp
+					</form>
 			</div>
 	</div> <!-- Jumbotron -->
 </div>
@@ -56,3 +64,4 @@
 <?php
 	include_once("footer.php");
 ?>
+
