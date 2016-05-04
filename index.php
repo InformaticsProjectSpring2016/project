@@ -28,17 +28,34 @@
 						if($_GET["authorized"] == "0"){
 							echo '<div class="alert alert-danger animated fadeIn" role="alert">You are not authorized to view this page.</div>';
 						}
-						echo '<p class="lead">You are logged in!.</p>';
+						echo '
+						<p class="lead">You are logged in!</p>
+						<div class="row">
+							<h2>Quick Report: </h2>
+						</div>
+						<div class="row">';
+						// Get employers to echo buttons out for
+						$Username = $_SESSION['Username'];
+						$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
+						// prep query
+						$query = "Select Name,EmployerID from Employers where EmployerID = ANY (Select EmployerID from UsersEmployment where UserID = (Select UserID from Users where Username = '$Username'));";
+							
+						// execute sql statement
+						$result = queryDB($query, $db);
+						
+						// check if it worked
+						if (nTuples($result)> 0) {
+							//output data of each row, 1 is the actual employer id
+							while($row = mysqli_fetch_row($result)) {
+								echo '<a href="http://webdev.divms.uiowa.edu/~ngramer/project/enterhoursdata.php?employer='. $row[1] . '"><button type="button" class="btn btn-info btn-lg margin">'. $row[0] .'</button></a>';
+							}
+						}
+						else{
+							echo '<a href="http://webdev.divms.uiowa.edu/~ngramer/project/addemployment.php"><button type="button" class="btn btn-warning btn-lg">Add Employer</button></a>';
+						}
+						echo '</div>';
 					}
 				?>
-				<h2>Quick Report: </h2>
-					<form method="link" action="enterhoursdata.php"> 
-						<input type="submit" class="btn btn-info btn-lg" value="Walmart"> &nbsp
-						<input type="submit" class="btn btn-danger btn-lg" value="Hyvee"> &nbsp
-						<input type="submit" class="btn btn-success btn-lg" value="Menards"> &nbsp
-						<input type="submit" class="btn btn-primary btn-lg" value="Walgreens"> &nbsp
-						<input type="submit" class="btn btn-warning btn-lg" value="Target"> &nbsp
-					</form>
 			</div>
 	</div> <!-- Jumbotron -->
 </div>
