@@ -41,12 +41,22 @@
 							
 							$query = "Select UserID from Users where Username = '$Username';";
 							$_SESSION['UserID'] = mysqli_fetch_row(queryDB($query, $db))[0];
+							$UserID = $_SESSION['UserID'];
 							
 							$query = "Select AccountType from Users where Username = '$Username';";
 							$_SESSION['AccountType'] = mysqli_fetch_row(queryDB($query, $db))[0];
 							
 							$query = "Select FirstName from Users where Username = '$Username';";
 							$_SESSION['FirstName'] = mysqli_fetch_row(queryDB($query, $db))[0];
+							
+							/* Check for verified status */
+							$query = "SELECT Verified, Phone from Users where UserID = '$UserID';";
+							$result = queryDB($query, $db);	
+							$row = mysqli_fetch_row($result);
+							if($row[0] != 1){
+								header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/verifySMS.php?number=". $row[1]);
+								die();
+							}
 							
 							/* Check for active employers */
 							$query = "SELECT * FROM UsersEmployment WHERE UserID = (SELECT UserID from Users where Username = '$Username');";
