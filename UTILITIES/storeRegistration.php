@@ -1,8 +1,7 @@
 <?php
-
+ob_start();
 	$menuHighlight = 0;
 	$pageTitle="Register";
-	include_once("../header.php");
 	include_once('config.php');
 	include_once('dbutils.php');
 	// This loads the SendSMS Function
@@ -13,40 +12,34 @@
 		$Username = mysqli_real_escape_string($db, $_POST['Username']);
 		$Firstname = mysqli_real_escape_string($db, $_POST['Firstname']);
 		$Lastname = mysqli_real_escape_string($db, $_POST['Lastname']);
-		$Password = mysqli_real_escape_string($db, $_POST['Password1']);
+		$Password1 = mysqli_real_escape_string($db, $_POST['Password1']);
+		$Password2 = mysqli_real_escape_string($db, $_POST['Password2']);
 		$Cell = mysqli_real_escape_string($db, $_POST['Cell']);
 		$Age = mysqli_real_escape_string($db, $_POST['Age']);
 		$Email = mysqli_real_escape_string($db, $_POST['Email']);
-		$Password = crypt($Password);
-
-		/* $token = SendSMS($Cell);
-		$query = "insert into SMSTokens (Cell, Token) VALUES ('$Cell','$token');";
-		$result = queryDB($query,$db); */
+		$Password = crypt($Password1);
+		$query = "SELECT COUNT(UserID) FROM Users WHERE Username = '$Username';";
+		if(mysql_fetch_row(queryDB($query,$db))[0]>0){
+			header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/register.php?username=1");
+		}else{
+			if($Password1 == $Password2){
+				$token = SendSMS($Cell);
+				$query = "insert into SMSTokens (Cell, Token) VALUES ('$Cell','$token');";
+				$result = queryDB($query,$db);
+				$query = "insert into Users (Username, FirstName, LastName, UserPassword, Phone, Age,Email) VALUES ('$Username','$Firstname','$Lastname','$Password','$Cell','$Age','$Email');";
+				$result = queryDB($query, $db);	
+				header('Location: http://webdev.divms.uiowa.edu/~ngramer/project/verifySMS.php?number='.$Cell);
+			}else{
+				header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/register.php?password=1");
+			}
+		}
+		
 
 	} else {
 		die();
 	}
 	
-	$query = "insert into Users (Username, FirstName, LastName, UserPassword, Phone, Age,Email) VALUES ('$Username','$Firstname','$Lastname','$Password','$Cell','$Age','$Email');";
-	$result = queryDB($query, $db);	
-	
-	header("Refresh: 3; url=http://webdev.divms.uiowa.edu/~ngramer/project/login.php?register=1")
-?>
-
-	<div class="jumbotron">
-		<div class="text-center">
-			<form action="verifyRegistrationCode.php" method="post">
-				<div class="form-group">
-					<div class="input-group">	
-						<div class="input-group-addon">Registration Code</div>
-						<input type="number" class="form-control" placeholder="Enter the registration code sent to your phone." name="code"/>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-default" name="submit">Verify</button>
-			</form>
-		</div>
-	</div>
-<?php
-	include_once("../footer.php");
+ob_flush();
+ 
 ?>
 

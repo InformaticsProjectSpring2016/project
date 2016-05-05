@@ -13,7 +13,14 @@
 		<div class="text-center">
 			<h1>Register</h1>
 			<p class="lead">Please enter your information below.</p>
-			
+			<?php
+				if($_GET["password"] == "1"){
+					echo '<div class="alert alert-danger animated fadeIn" role="alert">Your Passwords do not match. Please try again.</div>';
+				}
+				if($_GET["Username"] == "1"){
+					echo '<div class="alert alert-danger animated fadeIn" role="alert">That Username has been taken.</div>';
+				}
+			?>
 		<form id="register" action="UTILITIES/storeRegistration.php" class="form-horizontal" method="post">
 			<div class="row">
 				<div class="form-group">
@@ -46,7 +53,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-8">
-						<input type="email" class="form-control" placeholder="Email" name="Email" required>
+						<input type="email" class="form-control" placeholder="Email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 					</div>
 				</div>
 			</div>
@@ -64,7 +71,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Username</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="Username" placeholder="Username must be between 8 and 20 characters" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
+						<input type="text" class="form-control" name="Username" placeholder="Username must be between 4 and 20 characters" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{4,20}$" required="required">
 					</div>
 				</div>
 			</div>
@@ -73,7 +80,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" name="Password1" placeholder="Password must contain 1 uppercase, lowercase and number" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+						<input type="password" class="form-control" name="Password1" placeholder="Password must contain 1 uppercase, lowercase and number and at least 5 charaters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" required="required">
 					</div>
 				</div>
 			</div>
