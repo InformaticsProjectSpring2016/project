@@ -17,3 +17,8 @@ div.repeater-header {
 }
 
 .container.info { animation-delay:0.8s; -moz-animation-delay:0.8s; -webkit-animation-delay:0.8s; }
+
+.margin {
+	margin-left:3px;
+	margin-right:3px;
+}
