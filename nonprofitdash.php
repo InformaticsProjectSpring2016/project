@@ -55,6 +55,7 @@
 						<th>UserID</th>
 						<th>First Name</th>
 						<th>Email</th>
+						<th>Employer's Name</th>
 					  </tr>
 					</thead>
 					<!--rows-->
@@ -63,7 +64,7 @@
 						// get a handle to the database
 						$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 						// get users who have issues
-						$query = "SELECT u.UserID, u.FirstName, u.Email, p.HoursPaid, Employment.HourlyWage, p.AmountPaid
+						$query = "SELECT u.UserID, u.FirstName, u.Email, p.HoursPaid, Employment.HourlyWage, p.AmountPaid, Employers.Name
 									FROM Users u
 									INNER JOIN PaycheckData p ON (u.UserID = p.UserID)
 									INNER JOIN WageDataEntries h ON (h.UserID = p.UserID) AND (h.EmployerID = p.EmployerID) AND (h.EntryDate >= p.PayPeriodStart) AND (h.EntryDate <= p.PayPeriodEnd)
@@ -81,6 +82,7 @@
 									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewuserdata.php?UserID=". $row['UserID'] ."'>". $row['UserID'] . "</td>
 									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewuserdata.php?UserID=". $row['UserID'] ."'>" . $row['FirstName'] . "</td> 
 									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewuserdata.php?UserID=". $row['UserID'] ."'>" . $row['Email'] . "</td>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewuserdata.php?UserID=". $row['UserID'] ."'>" . $row['Name'] . "</td>
 								</tr>";}
 						}else{
 							echo "<h1>No Problem Users Found</h1>";
@@ -279,9 +281,9 @@
 							while($row = mysqli_fetch_row($result)) {
 								echo "
 								<tr>
-									<td>". $row[2] . "</td>
-									<td>" . $row[0] . "</td> 
-									<td>" . $row[1] . "</td>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewemployerpaychecks.php?ID=".$row[2]."'>". $row[2] . "</td>
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewemployerpaychecks.php?ID=".$row[2]."'>" . $row[0] . "</td> 
+									<td class='clickable-row' data-href='http://webdev.divms.uiowa.edu/~ngramer/project/viewemployerpaychecks.php?ID=".$row[2]."'>" . $row[1] . "</td>
 								</tr>";
 							}
 						} else {
