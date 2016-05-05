@@ -5,7 +5,7 @@ ob_start();
 	include_once('config.php');
 	include_once('dbutils.php');
 	// This loads the SendSMS Function
-	include_once('../sendRegistration.php');
+	include_once('SendSms.php');
 	// get a handle to the database
 	$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
 	if(isset($_POST['Cell'])){

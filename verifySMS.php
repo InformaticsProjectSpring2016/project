@@ -1,10 +1,9 @@
 <?php
+	ob_start();
 	$menuHighlight = 0;
 	$pageTitle="Verify SMS";
 	include_once("header.php");
-	include_once('UTILITES/config.php');
-	include_once('UTILITES/dbutils.php');
-	include_once('sendRegistration.php');
+	include_once('UTILITIES/SendSms.php');
 ?>
 <div class ="container">
 <div class = "col-xs-12">
@@ -46,7 +45,7 @@ if(isset($_POST['code']) && $_POST['code'] != 0 ){
 			$query = "UPDATE Users SET Verified ='1' where Phone = '$Cell';";
 			$result = queryDB($query,$db);
 			$query = "DELETE from SMSTokens where Cell = '$Cell';";
-			$result = queryDB($query,$db)
+			$result = queryDB($query,$db);
 			Echo "<div class='text-center'><div class='alert alert-success animated fadeIn' role='alert'>Congrats! You've Registered, please log in now.</div></div>";
 			header("Refresh: 3; url=http://webdev.divms.uiowa.edu/~ngramer/project/login.php?register=1");
 		}else{
@@ -72,4 +71,5 @@ $result = queryDB($query,$db);
 header("Refresh: 1; url=http://webdev.divms.uiowa.edu/~ngramer/project/verifySMS.php?number=".$Cell);
 }
 include_once("footer.php");
+ob_flush();
 ?>
