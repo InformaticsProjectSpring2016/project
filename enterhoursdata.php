@@ -18,7 +18,11 @@
 		<div class="text-center">
 			<h1>Enter My Hours</h1>
 			<p class="lead">Please enter your hours worked below</p>
-
+		<?php
+			if($_GET["checked"] == "0"){
+				echo '<div class="alert alert-danger animated fadeIn" role="alert">You did not select an entry to replace.</div>';
+			}
+		?>
 		<form action="savehoursdata.php" class="form-horizontal" method="post">
 			<div class="form-group">
 				<div class="row">
