@@ -13,10 +13,8 @@
 ?>
 
 
-<div class = "col-xs-2"></div> <!-- Used to push jumbotron smaller and to the right -->
-<div class = "col-xs-8">
-<div class="text-center">
-	<div class="container">
+<div class ="container">
+<div class = "col-xs-12">
 	<!-- jumbotron-->
 	<div class="jumbotron">
 
@@ -65,9 +63,9 @@
 		</form>
 		</div>
 	</div> <!-- Jumbotron -->
-	</div> <!-- Container -->
 </div>
-</div>
+</div> <!-- Container -->
+
 <?php
 if(isset($_POST['Name'])){
 	$db = connectDB($DBHost,$DBUser,$DBPasswd,$DBName);
