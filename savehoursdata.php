@@ -31,12 +31,12 @@
 						<div class="text-center">
 							<h1>Enter My Hours</h1>
 							<p class="lead">Are these hours in addition to your current hours for this employer or updating/replacing them?</p>
-
+							<div class="alert alert-warning animated fadeIn" role="alert">Selecting multiple entries will eliminate both and replace with your entry. Selecting only one will update that entry.</div>
 						<form action="confirmHoursEntry.php" class="form-horizontal" method="post">';
 						while($row = mysqli_fetch_row($result)){
 							echo '
 							<div class="form-group">
-							<input type="checkbox" name="EntryID[Entry]" value="'.$row[0].'">
+							<input type="checkbox" name="EntryID[]" value="'.$row[0].'">
 							<tr>
 								<td>On Date: '. $row[1] .'</td><br>
 								<td>Hours: '. $row[2] .'</td><br>
