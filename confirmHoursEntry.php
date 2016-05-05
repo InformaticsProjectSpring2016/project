@@ -33,6 +33,7 @@
 				$query = "DELETE FROM WageDataEntries where EntryID = '$Entry';";
 				$result = queryDB($query, $db);
 			}
+			
 			$query = "Insert INTO WageDataEntries (EntryDate,HoursWorked,UserID,EmployerID) VALUES ('$EntryDate','$HoursWorked','$UserID','$EmployerID');";
 			$result = queryDB($query, $db);
 			header("Location: http://webdev.divms.uiowa.edu/~ngramer/project/?Hours=1");
